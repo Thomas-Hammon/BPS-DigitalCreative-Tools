@@ -1,2 +1,3 @@
-# BPS-DigitalCreative-Tools
-A collection of tools used by the digital creative team at Bass Pro Shops, LLC.
+Hello! Welcome to the BPS Digital Creative tools repository.
+
+This is our first commit.
