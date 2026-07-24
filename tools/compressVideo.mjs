@@ -12,10 +12,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
+console.log("-----------------------------------------");
+console.log(__dirname);
+console.log("-----------------------------------------");
+
 // === CONFIG ===
 const videoPath = path.resolve(
   __dirname,
-  "../assets/videos/temp/Winchester-Turkey-Loads.mp4",
+  "/Users/thammon/Downloads/Tactacam_Reveal4.0_60s_16x9_FINAL_4k_1 (1).mp4",
 ); // Change this to your actual video file
 const maxSizeMB = 100;
 
