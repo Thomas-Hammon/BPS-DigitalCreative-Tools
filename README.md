@@ -10,8 +10,7 @@ Hello! Welcome to the BPS Digital Creative tools repository.
 
 1. Run "npm install" in the terminal.
 
-##List of tools in the respository:
+##List of tools in the repository:
 
 1. Video Compression Script - Used to reduce file size for videos
 2. Generate Gallery JSON - Used for ????
-   hello
