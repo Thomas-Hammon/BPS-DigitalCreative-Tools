@@ -1,24 +1,23 @@
 Hello! Welcome to the BPS Digital Creative tools repository.
 
-##Requirements
+## Requirements
 
 1. Node.JS
 2. NVM
    (If you don't have it yet, you can download it here: https://nodejs.org/en/download)
 
-##Getting started
+## Getting started
 
 1. Run "npm install" in the terminal.
 
-##List of tools in the repository:
+## List of tools in the repository:
 
 1. Video Compression Script - Used to reduce file size for videos
 2. Generate Gallery JSON - Used for ????
-   hello
+3. Components Library
 
 ## Contains Components Library (StoryBook)
 
 1. Run "cd ComponentsLibrary" in the terminal.
 2. Run "npm install" in the terminal.
-   3.Run "npm run storybook" in the terminal.
-2. Generate Gallery JSON - Used for ????
+3. Run "npm run storybook" in the terminal.
