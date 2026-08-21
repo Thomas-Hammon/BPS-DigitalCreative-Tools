@@ -16,7 +16,7 @@ const ExportPreview = () => {
 };
 
 export default {
-  title: "Custom_Examples/Custom_Examples/Example Card",
+  title: "Examples/Custom_Examples/Custom_Examples/Example Card",
   component: ExampleCard,
   tags: ["autodocs"],
   parameters: {

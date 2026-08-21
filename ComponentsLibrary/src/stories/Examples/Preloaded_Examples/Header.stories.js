@@ -3,7 +3,7 @@ import { fn } from "storybook/test";
 import { Header } from "./Header";
 
 export default {
-  title: "Custom_Examples/PreloadedExamples/Header",
+  title: "Examples/Preloaded_Examples/Header",
   component: Header,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],

@@ -20,7 +20,7 @@ const ExportPreview = () => {
 };
 
 export default {
-  title: "Custom_Examples/Custom_Examples/Example Slider",
+  title: "Examples/Custom_Examples/Custom_Examples/Example Slider",
   component: ExampleSlider,
   tags: ["autodocs"],
 
