@@ -1,38 +1,40 @@
-import "./exampleSlider.css";
-import "./exampleSlider.vanilla.js";
-import cssText from "./exampleSlider.css?raw";
-import jsText from "./exampleSlider.vanilla.js?raw";
 import { renderToStaticMarkup } from "react-dom/server";
 
-// This is the single source of markup for both the React preview and the export.
-const ExampleSliderMarkup = () => {
+import "./exampleSlider.css";
+import "./exampleSlider.vanilla.js";
+
+import cssText from "./exampleSlider.css?raw";
+import jsText from "./exampleSlider.vanilla.js?raw";
+
+import { ExampleSliderDependencies } from "./exampleSlider.dependencies";
+import { createExportMarkup } from "../../../../storybook-utils/createExportMarkup";
+
+const defaultSlides = [
+  "Slide 1",
+  "Slide 2",
+  "Slide 3",
+  "Slide 4",
+  "Slide 5",
+  "Slide 6",
+];
+
+const ExampleSliderMarkup = ({ slides = defaultSlides }) => {
   return (
-    <div className="slider-container">
+    <div
+      className="example-slider slider-container"
+      data-component="example-slider"
+    >
       <div className="splide slider slider--grid" id="slider">
         <div className="splide__track slider-track">
           <ul className="splide__list slider-list">
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 1</div>
-            </li>
-
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 2</div>
-            </li>
-
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 3</div>
-            </li>
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 1</div>
-            </li>
-
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 2</div>
-            </li>
-
-            <li className="splide__slide slider-item">
-              <div className="slider-card">Slide 3</div>
-            </li>
+            {slides.map((slide, index) => (
+              <li
+                className="splide__slide slider-item"
+                key={`${slide}-${index}`}
+              >
+                <div className="slider-card">{slide}</div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -40,24 +42,19 @@ const ExampleSliderMarkup = () => {
   );
 };
 
-const exportMarkup = () => {
-  // The exported HTML needs plain text, so we turn the JSX above into a static HTML string.
-  const safeJsText = jsText.replace(/<\/script>/gi, "<\\/script>");
-  const html = renderToStaticMarkup(<ExampleSliderMarkup />);
-
-  return `
-<style>
-${cssText}
-</style>
-${html}
-<script reactSafe>
-${safeJsText}
-</script>`;
+export const ExampleSlider = ({ slides = defaultSlides }) => {
+  return <ExampleSliderMarkup slides={slides} />;
 };
 
-export const ExampleSlider = () => {
-  return <ExampleSliderMarkup />;
-};
+ExampleSlider.exportMarkup = (args = {}) => {
+  const slides = args.slides || defaultSlides;
+  const html = renderToStaticMarkup(<ExampleSliderMarkup slides={slides} />);
 
-// The Storybook story reads this helper to fill the HTML export panel.
-ExampleSlider.exportMarkup = exportMarkup;
+  return createExportMarkup({
+    markup: html,
+    cssText,
+    jsText,
+    scriptInit: "initExampleSlider();",
+    dependencies: ExampleSliderDependencies,
+  });
+};

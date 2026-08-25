@@ -1,73 +1,56 @@
-* {
+.example-slider {
   box-sizing: border-box;
 }
 
-.EMarketingSpotReact.sandbox-chase {
-  overflow-x: clip;
-}
-
-.slider {
+.example-slider .slider {
   width: 100%;
-
   max-width: 500px;
-
   margin: 0 auto;
   padding: 16px;
 }
 
-.slider-card {
+.example-slider .slider-card {
   height: 200px;
-
   border: 1px solid #000;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   font-size: 2rem;
 }
 
-.slider--grid .slider-card {
+.example-slider .slider--grid .slider-card {
   width: 80%;
-
   margin: 0 auto;
 }
 
 @media (min-width: 1024px) {
-  .slider--grid {
+  .example-slider .slider--grid {
     width: 100%;
-
     max-width: 1200px;
   }
-  .splide__arrow {
+
+  .example-slider .splide__arrow {
     display: none;
   }
 
-  .slider--grid .slider-track {
+  .example-slider .slider--grid .slider-track {
     overflow: visible;
   }
 
-  .slider--grid .slider-list {
+  .example-slider .slider--grid .slider-list {
     display: grid !important;
-
     grid-template-columns: repeat(3, 300px);
-
     gap: 16px;
-
     justify-content: center;
-
     transform: none !important;
   }
 
-  .slider--grid .slider-item {
+  .example-slider .slider--grid .slider-item {
     width: 300px !important;
-
     margin: 0 !important;
   }
 
-  .slider--grid .slider-card {
+  .example-slider .slider--grid .slider-card {
     width: 100%;
   }
 }

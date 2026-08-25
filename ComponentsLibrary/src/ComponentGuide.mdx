@@ -1,0 +1,194 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Component Creation" />
+
+# Component Creation Guide
+
+This project uses a consistent pattern for custom component examples. The goal is to keep the React markup, export markup, CSS, and runtime script organized in a predictable way so each component is easy to reuse and export as static HTML.
+
+## 1. Use a component folder
+
+Keep each component in a dedicated folder under the custom examples area, for example:
+
+- src/stories/Examples/Custom_Examples/ExampleSlider/
+- src/stories/Examples/Custom_Examples/ExampleButton/
+
+A typical component should include:
+
+- ComponentName.jsx
+- ComponentName.css
+- ComponentName.vanilla.js
+- ComponentName.dependencies.js
+- ComponentName.stories.js
+
+## 2. Keep the JSX focused on the component UI
+
+The JSX file should define the React component and export the default component markup. It should not contain duplicated export-building logic inline.
+
+```jsx
+const defaultSlides = [
+  { title: "Slide 1", url: "/slide-1" },
+  { title: "Slide 2", url: "/slide-2" },
+  { title: "Slide 3", url: "/slide-3" },
+];
+
+const ExampleSliderMarkup = ({ slides = defaultSlides }) => {
+  return (
+    <div className="example-slider" data-component="example-slider">
+      {slides.map((slide, index) => (
+        <div key={`${slide.url}-${index}`}>{slide.title}</div>
+      ))}
+    </div>
+  );
+};
+
+export const ExampleSlider = ({ slides = defaultSlides }) => {
+  return <ExampleSliderMarkup slides={slides} />;
+};
+```
+
+## 3. Use a shared export helper
+
+Do not build export HTML manually in the component file. Instead, use the shared export utility:
+
+```jsx
+import { renderToStaticMarkup } from "react-dom/server";
+import { createExportMarkup } from "../../../../storybook-utils/createExportMarkup";
+```
+
+Then assign the export function directly to the component:
+
+```jsx
+ExampleSlider.exportMarkup = (args = {}) => {
+  const slides = args.slides || defaultSlides;
+  const html = renderToStaticMarkup(<ExampleSliderMarkup slides={slides} />);
+
+  return createExportMarkup({
+    markup: html,
+    cssText,
+    jsText,
+    scriptInit: "initExampleSlider();",
+    dependencies: ExampleSliderDependencies,
+  });
+};
+```
+
+This keeps the export pattern consistent across components and ensures the generated HTML includes the CSS, JS, external dependencies, and init script in one place.
+
+## 4. Keep dependencies in a separate file
+
+A component-level dependency file should export an object with `stylesheets` and `scripts` arrays:
+
+```js
+export const ExampleSliderDependencies = {
+  stylesheets: [
+    "https://example.com/slider.css",
+  ],
+  scripts: [
+    "https://example.com/slider.js",
+  ],
+};
+```
+
+This lets the export and Storybook preview both load the same dependency set consistently.
+
+## 5. Scope CSS to the component
+
+Use a component root and prefix selectors with that root so styles do not leak into other examples.
+
+```css
+.example-slider {
+  width: 100%;
+}
+
+.example-slider .slider-card {
+  border: 1px solid #000;
+}
+```
+
+Avoid global selectors like `*`, `.slider`, or `button` unless they are intentionally part of the component root.
+
+### Prefer `@container` over `@media` for component behavior
+
+When building component styles, prefer container queries instead of viewport-based media queries. Components should respond to their own available width, not to the Storybook preview window size.
+
+```css
+/* Good: component responds to its own width */
+.example-slider {
+  container-type: inline-size;
+}
+
+@container (min-width: 900px) {
+  .example-slider .slider-card {
+    width: 300px;
+  }
+}
+```
+
+```css
+/* Avoid: this reacts to the browser or Storybook preview width, not the component container */
+@media (min-width: 900px) {
+  .example-slider .slider-card {
+    width: 300px;
+  }
+}
+```
+
+Do not rely on `@media` for component layout unless the component is intentionally designed to react to the full page viewport. Storybook's preview canvas is not the real runtime container, so `@media` rules can make a component appear correct in the preview while failing in actual page usage.
+
+> For this repo, treat component CSS as container-based by default: use `@container` first, and only use `@media` for true page-level layout decisions outside the component itself.
+
+## 6. Scope vanilla JS to the component
+
+The runtime script should target the component instance using a data attribute instead of a broad global selector:
+
+```js
+const sliderRoot = document.querySelector('[data-component="example-slider"]');
+const slider = sliderRoot ? sliderRoot.querySelector("#slider") : null;
+```
+
+This keeps each component isolated and prevents script collisions across multiple instances on the page.
+
+## 7. Use the shared markup helper for exports
+
+The shared helper in `src/storybook-utils/createExportMarkup.js` does the work of:
+
+- adding stylesheet links
+- embedding local CSS
+- rendering the generated markup
+- adding script tags
+- escaping script closing tags safely
+- running a script init command when needed
+
+That means each component file should mostly focus on its JSX + data + export hook, not raw HTML assembly.
+
+## 8. Storybook pattern
+
+The Storybook file should render the component and save the export markup to `window` so the HTML preview can use it:
+
+```jsx
+const ExportPreview = () => {
+  const markup = ExampleSlider.exportMarkup();
+
+  useEffect(() => {
+    window.__exampleSliderExportMarkup = markup;
+  }, [markup]);
+
+  return createElement(ExampleSlider);
+};
+```
+
+This keeps the preview and exported HTML aligned with the same component output.
+
+## 9. Recommended checklist
+
+Before finishing a new component, confirm:
+
+- JSX renders with default props/data
+- CSS is scoped to the component root
+- vanilla JS uses the component root and `data-component`
+- dependencies live in a component-specific dependencies file
+- `Component.exportMarkup` calls the shared export helper
+- the Storybook story uses the export preview pattern
+
+Following this structure keeps components predictable, reusable, and easier to maintain across the library.
