@@ -1,0 +1,149 @@
+{
+  "htw": {
+    "items": [
+      {
+        "id": 1,
+        "productTitle": "Minn Kota Terrova Freshwater Trolling Motor with Dual Spectrum CHIRP Sonar",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Was starting at ",
+        "regPrice": "$1999.99",
+        "nowCallout": "Now starting at ",
+        "nowPrice": "$1899.98",
+        "textCallout": "Save $100",
+        "imgCallout": "Wireless Remote Included!",
+        "url": "https://www.basspro.com/p/minn-kota-terrova-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-wireless-remote",
+        "googleSafe": false
+      },
+      {
+        "id": 2,
+        "productTitle": "Big Bad Gun",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Compare to ",
+        "regPrice": "$1099.99",
+        "nowCallout": "Now ",
+        "nowPrice": "$849.99",
+        "textCallout": "Save $250",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/p/garmin-fenix-8-amoled-multisport-gps-smartwatch",
+        "googleSafe": true
+      },
+      {
+        "id": 3,
+        "productTitle": "Urchin Baits",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "",
+        "regPrice": "",
+        "nowCallout": "",
+        "nowPrice": "",
+        "textCallout": "",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/l/urchin-fuzzy-baits-shop-all",
+        "googleSafe": false
+      },
+      {
+        "id": 4,
+        "productTitle": "Winchester SXP Waterfowl Hunter Pump-Action Shotgun",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Was starting at ",
+        "regPrice": "$419.99",
+        "nowCallout": "Now starting at ",
+        "nowPrice": "$219.98",
+        "textCallout": "Save $200 on Select Finishes",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/p/winchester-sxp-waterfowl-hunter-pump-action-shotgun",
+        "googleSafe": true
+      },
+      {
+        "id": 5,
+        "productTitle": "Vortex Impact 4000 Laser Rangefinder with Ballistic Rail-Mount",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Was ",
+        "regPrice": "$1499.99",
+        "nowCallout": "Now ",
+        "nowPrice": "$1099.98",
+        "textCallout": "Save $400",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/p/vortex-impact-4000-laser-rangefinder-with-ballistic-rail-mount",
+        "googleSafe": false
+      },
+      {
+        "id": 6,
+        "productTitle": "YETI Venom Series",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "",
+        "regPrice": "",
+        "nowCallout": "",
+        "nowPrice": "",
+        "textCallout": "Save 20%",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/l/yeti-venom-collection",
+        "googleSafe": false
+      },
+      {
+        "id": 7,
+        "productTitle": "Men's HOKA Stinson ATR 7 Running Shoes",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Was starting at ",
+        "regPrice": "$169.99",
+        "nowCallout": "Now starting at ",
+        "nowPrice": "$139.98",
+        "textCallout": "Save $30",
+        "imgCallout": "Available in 4 colors!",
+        "url": "https://www.basspro.com/p/hoka-stinson-atr-7-running-shoes-for-men",
+        "googleSafe": false
+      },
+      {
+        "id": 8,
+        "productTitle": "Bass Pro Shops Bass Regulation Cornhole Bean Bag Game Set",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "",
+        "regPrice": "$169.99",
+        "nowCallout": "",
+        "nowPrice": "",
+        "textCallout": "Buy One, Get One 50% on Select Yard Games",
+        "imgCallout": "Built to official tournament specifications!",
+        "url": "https://www.basspro.com/p/bass-pro-shops-bass-regulation-cornhole-bean-bag-game-set",
+        "googleSafe": false
+      },
+      {
+        "id": 9,
+        "productTitle": "BOTE LowRider Aero 10′6″ Inflatable Hybrid Paddleboard Package",
+        "image": "https://placehold.co/300x368?text=Normal%20Image",
+        "wasCompareCallout": "Was starting at ",
+        "regPrice": "$999",
+        "nowCallout": "Now starting at ",
+        "nowPrice": "$798.98",
+        "textCallout": "Save $200",
+        "imgCallout": "Air Pump and Repair Kit Included!",
+        "url": "https://www.basspro.com/p/bote-lowrider-aero-106-inflatable-hybrid-paddleboard-package",
+        "googleSafe": false
+      }
+    ],
+    "gSafe": [
+      {
+        "id": 2,
+        "productTitle": "Safe Item",
+        "image": "https://placehold.co/300x368?text=Google%20Safe%20Image",
+        "wasCompareCallout": "Was ",
+        "regPrice": "$1499.99",
+        "nowCallout": "Now ",
+        "nowPrice": "$1099.98",
+        "textCallout": "Save $400",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/p/vortex-impact-4000-laser-rangefinder-with-ballistic-rail-mount"
+      },
+      {
+        "id": 4,
+        "productTitle": "Vortex Impact 4000 Laser Rangefinder with Ballistic Rail-Mount",
+        "image": "https://placehold.co/300x368?text=Google%20Safe%20Image",
+        "wasCompareCallout": "Was ",
+        "regPrice": "$1499.99",
+        "nowCallout": "Now ",
+        "nowPrice": "$1099.98",
+        "textCallout": "Save $400",
+        "imgCallout": "",
+        "url": "https://www.basspro.com/p/vortex-impact-4000-laser-rangefinder-with-ballistic-rail-mount"
+      }
+    ]
+  }
+}
