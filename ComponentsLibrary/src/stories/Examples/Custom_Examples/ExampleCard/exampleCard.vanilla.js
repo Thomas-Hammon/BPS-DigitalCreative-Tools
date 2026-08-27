@@ -15,7 +15,7 @@
       return;
     }
 
-    const card = target.closest(".example-card");
+    const card = target.closest('[data-component="example-card"]');
     if (!card) {
       return;
     }

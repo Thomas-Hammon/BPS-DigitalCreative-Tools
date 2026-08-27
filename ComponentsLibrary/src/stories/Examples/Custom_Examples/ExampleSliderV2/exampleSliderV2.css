@@ -1,0 +1,66 @@
+/* =========================================================
+   PLP Hero
+   ========================================================= */
+
+.plpHeroCont {
+  container-type: inline-size;
+}
+
+.plpHeroCont .plp-hero-container {
+  background-color: #516d58;
+  text-align: center;
+}
+
+.plp-hero-container {
+  min-height: 100px;
+}
+
+.plp-hero-header {
+  color: white;
+  font-size: 34px;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.bebas {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.green-cta {
+  background-color: #5d6f45 !important;
+  border: 2px solid #5d6f45 !important;
+  color: #fff !important;
+}
+
+.green-cta:hover {
+  background-color: transparent !important;
+  color: #5d6f45 !important;
+}
+
+.sBtn {
+  display: block;
+  background-color: white !important;
+  border: 2px solid white !important;
+  border-radius: 5px !important;
+  color: #000 !important;
+  padding: 0.2rem 2rem !important;
+  max-width: 150px;
+  width: 90%;
+  margin: 0.5rem auto;
+}
+
+.sBtn a,
+.splide__slide a {
+  text-decoration: none !important;
+}
+
+.plp-hero-logo-wrapper img {
+  max-width: 450px;
+}
+
+@container (max-width: 1080px) {
+  .plp-hero-logo-wrapper img {
+    max-width: 380px;
+  }
+}
+
+/* =======================================================

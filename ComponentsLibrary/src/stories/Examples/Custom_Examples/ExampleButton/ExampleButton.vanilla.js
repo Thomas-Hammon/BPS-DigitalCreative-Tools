@@ -15,7 +15,7 @@
       return;
     }
 
-    const btn = target.closest(".example-button");
+    const btn = target.closest('[data-component="example-button"]');
     if (!btn) {
       return;
     }

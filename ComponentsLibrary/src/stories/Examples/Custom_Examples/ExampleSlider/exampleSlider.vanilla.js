@@ -4,7 +4,10 @@
   }
 
   function initExampleSlider() {
-    const slider = document.querySelector("#slider");
+    const sliderRoot = document.querySelector(
+      '[data-component="example-slider"]',
+    );
+    const slider = sliderRoot ? sliderRoot.querySelector("#slider") : null;
 
     if (!slider || !window.Splide) {
       return;
