@@ -22,7 +22,7 @@ function getFiscalWeek() {
 // ============================================================
 
 async function loadJson() {
-  const filePath = path.join(__dirname, "htw.json");
+  const filePath = path.join(__dirname, "jsonTest.json");
 
   const file = await fs.readFile(filePath, "utf-8");
 
@@ -101,13 +101,13 @@ function generateSlides(data) {
 
       // Find Google Safe replacement by matching ID.
       const replacement = googleSafeItems.find(
-        (safeItem) => safeItem.id === item.id,
+        (safeItem) => safeItem.position === item.position,
       );
 
       // Restricted item with no replacement.
       if (!replacement) {
         console.warn(
-          `Warning: Item ${item.id} is marked googleSafe but has no matching gSafe replacement.`,
+          `Warning: Item ${item.position} is marked googleSafe but has no matching gSafe replacement.`,
         );
 
         return generateSlide(item, "notGoogleSafeSlide");
