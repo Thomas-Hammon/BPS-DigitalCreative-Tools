@@ -16,6 +16,7 @@ Hello! Welcome to the BPS Digital Creative tools repository.
 2. Generate Gallery JSON - Used for ????
 3. Components Library
 4. HTWGenerator
+   a. structureData.js
 
 ## Contains Components Library (StoryBook)
 
@@ -38,3 +39,5 @@ Hello! Welcome to the BPS Digital Creative tools repository.
    node htwGenerator.js
 
 4. The generated HTW HTML will be output by the generator.
+
+(Side note: structureData.js helps automate step two, but requires further work to intergrate seamlessly.)
