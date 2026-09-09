@@ -29,15 +29,14 @@ Hello! Welcome to the BPS Digital Creative tools repository.
 1. Run:
    cd tools/HTWGenerator
 
-2. Update `htw.json` with the HTW slider details.
-   - `items` contains the default slider items.
-   - Set `googleSafe` to `true` if an item needs a Google-safe replacement and make a corresponding gSafe item.
-   - `gSafe` contains the Google-safe replacement items.
-   - A `gSafe` item's `id` must match the `id` of the item it replaces.
+2. Paste the Excel/tab-delimited HTW source data into `rawData` in `structureData.js`.
 
-3. Run the generator:
-   node htwGenerator.js
+3. Run:
+   node run.js
 
-4. The generated HTW HTML will be output by the generator.
+4. `run.js` will automatically:
+   - run `structureData.js`
+   - update `htw.json`
+   - run `htwGenerator.js`
 
-(Side note: structureData.js helps automate step two, but requires further work to intergrate seamlessly.)
+5. The generated HTW HTML file will be written to `tools/HTWGenerator/output/`.
