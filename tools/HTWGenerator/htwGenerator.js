@@ -22,11 +22,18 @@ function getFiscalWeek() {
 // ============================================================
 
 async function loadJson() {
-  const filePath = path.join(__dirname, "jsonTest.json");
+  const filePath = path.join(__dirname, "htw.json");
 
   const file = await fs.readFile(filePath, "utf-8");
 
   return JSON.parse(file);
+}
+
+function isRestrictedItem(item) {
+  return (
+    item.googleSafe === true ||
+    String(item.googleSafe).trim().toUpperCase() === "TRUE"
+  );
 }
 
 // ============================================================
@@ -37,6 +44,18 @@ function generateSlide(item, extraClass = "") {
   const slideClass = extraClass
     ? `splide__slide htw-item ${extraClass}`
     : "splide__slide htw-item";
+
+  const itemHref = item.URL || item.url || "#";
+
+  const altText = [
+    item.imgCallout,
+    item.CLUBPrice,
+    item.CLUBSavings,
+    item.CLUBExp,
+  ]
+    .map((value) => (value || "").trim())
+    .filter(Boolean)
+    .join(" | ");
 
   const nowPriceHtml = item.nowPrice
     ? `
@@ -68,11 +87,11 @@ ${regPriceHtml}
           role="group"
           aria-roledescription="slide"
         >
-          <a href="${item.url}">
+          <a href="${itemHref}">
             <img
               loading="lazy"
               src="${item.image}"
-              alt="${item.imgCallout || ""}"
+              alt="${altText}"
             />
 
             <div class="htwItemCopy">
@@ -94,8 +113,10 @@ function generateSlides(data) {
 
   return items
     .map((item) => {
+      const isRestricted = isRestrictedItem(item);
+
       // Normal item. No replacement needed.
-      if (!item.googleSafe) {
+      if (!isRestricted) {
         return generateSlide(item);
       }
 
@@ -520,10 +541,6 @@ function generateHtml(data) {
   const slides = generateSlides(data);
 
   return `
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
-  />
 
 ${generateCss()}
 
@@ -555,8 +572,6 @@ ${slides}
       </div>
     </div>
   </section>
-
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 
 ${generateGoogleSafeScript()}
 
@@ -615,7 +630,7 @@ async function main() {
     await fs.writeFile(outputFile, html, "utf-8");
 
     // Generator stats
-    const restrictedItems = data.htw.items.filter((item) => item.googleSafe);
+    const restrictedItems = data.htw.items.filter(isRestrictedItem);
 
     const googleSafeItems = data.htw.gSafe || [];
 
@@ -625,7 +640,7 @@ async function main() {
 
     console.log(`Fiscal Week: ${fiscalWeek}`);
 
-    console.log(`Normal Positions: ${data.htw.items.length}`);
+    console.log(`Normal Items: ${data.htw.items.length}`);
 
     console.log(`Restricted Items: ${restrictedItems.length}`);
 
