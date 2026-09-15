@@ -1,3 +1,6 @@
+const fs = require("fs");
+const path = require("path");
+
 const rawData = `Garmin fenix 9 AMOLED Multisport GPS Smartwatch	5303346		$1,149.99							Just launched!	/l/garmin-fenix-9-amoled-multisport-gps-smartwatch	FALSE
 Minn Kota Terrova Freshwater Trolling Motor with Dual Spectrum CHIRP Sonar	3796093	Was starting at 	$1999.99	Now starting at 	$1899.98				Save up to $200 on Select Models 	Wireless Remote Included!	https://www.basspro.com/p/minn-kota-terrova-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-wireless-remote	FALSE
 Urchin Baits	4946610								Trending Technique!		https://www.basspro.com/l/urchin-fuzzy-baits-shop-all	FALSE
@@ -121,8 +124,19 @@ function structureData(cdnBaseUrl) {
       gSafe: gSafe,
     },
   };
-  console.log(structuredData);
-  console.log(structuredData.htw.gSafe[0]);
+  return structuredData;
 }
 
-structureData(cloudinaryBaseULR);
+const htwJson = structureData(cloudinaryBaseULR);
+
+module.exports = htwJson;
+
+if (require.main === module) {
+  const outputPath = path.join(__dirname, "htw.json");
+  fs.writeFileSync(
+    outputPath,
+    JSON.stringify(htwJson, null, 2) + "\n",
+    "utf-8",
+  );
+  console.log(`Wrote HTW data to ${outputPath}`);
+}
