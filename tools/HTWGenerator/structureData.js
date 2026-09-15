@@ -100,7 +100,7 @@ function structureData(cdnBaseUrl) {
         count,
         gSafeData[0],
         gSafeData[1],
-        cdnBaseUrl + "GS-" + count + ".png?$bpssite_default$",
+        cdnBaseUrl + count + "-GS" + ".png?$bpssite_default$",
         gSafeData[2],
         gSafeData[3],
         gSafeData[4],
