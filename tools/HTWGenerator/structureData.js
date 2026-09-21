@@ -1,17 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
-const rawData = `Garmin fenix 9 AMOLED Multisport GPS Smartwatch	5303346		$1,149.99							Just launched!	/l/garmin-fenix-9-amoled-multisport-gps-smartwatch	FALSE
-Minn Kota Terrova Freshwater Trolling Motor with Dual Spectrum CHIRP Sonar	3796093	Was starting at 	$1999.99	Now starting at 	$1899.98				Save up to $200 on Select Models 	Wireless Remote Included!	https://www.basspro.com/p/minn-kota-terrova-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-wireless-remote	FALSE
-Urchin Baits	4946610								Trending Technique!		https://www.basspro.com/l/urchin-fuzzy-baits-shop-all	FALSE
-Winchester SXP Waterfowl Hunter Pump-Action Shotgun	3642629	Was starting at 	$419.99	Now starting at 	$219.98				Save $200 on Select Finishes		https://www.basspro.com/p/winchester-sxp-waterfowl-hunter-pump-action-shotgun	TRUE
-Vortex Razor HD 16-48x65 Spotting Scope	2006116	Compare to 	RA-65A model at $1,299.99	Now 	$699.97						https://www.basspro.com/p/vortex-razor-hd-16-48x65-angled-spotting-scope	FALSE
-YETI Venom Series	4665356, 4665073								Save 20%		https://www.basspro.com/l/yeti-venom-collection	FALSE
-Men's HOKA Stinson ATR 7 Running Shoes 	4312332	Was starting at 	$169.99 	Now starting at 	$ 139.98				Save $30	Available in 4 colors!	https://www.basspro.com/p/hoka-stinson-atr-7-running-shoes-for-men	FALSE
-Bass Pro Shops Bass Regulation Cornhole Bean Bag Game Set	4267555		$169.99 						Buy One, Get One 50% on Select Yard Games	Built to official tournament specifications!	https://www.basspro.com/p/bass-pro-shops-bass-regulation-cornhole-bean-bag-game-set	FALSE
-BOTE LowRider Aero 10′6″ Inflatable Hybrid Paddleboard Package	4533868	Was starting at 	999	Now starting at 	$798.98				Save $ 200	Air Pump and Repair Kit Included! 	https://www.basspro.com/p/bote-lowrider-aero-106-inflatable-hybrid-paddleboard-package	FALSE`;
+const rawData = `Wicked Ridge by TenPoint Invader M1 Crossbow Package	3915457	Compare to 	$2,599.99	Now 					Save $200	0	https://www.basspro.com/p/wicked-ridge-by-tenpoint-invader-m1-crossbow-package-with-acudraw	FALSE
+Moultrie Edge Solar Cellular Camera	4383549	Was 	$179.99	Now 					Save $70	0	https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo	FALSE
+Minn Kota Ultrex Quest-Series Freshwater Trolling Motor w/ Dual Spectrum CHIRP Sonar 	3796050	Was starting at 	$3,899.99	Now starting at 					Save $300	Micro Remote Included! 	https://www.basspro.com/p/minn-kota-ultrex-quest-series-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-micro-remote	FALSE
+"NEW! Winchester M70 Safari Cape Buffalo 													"	4756680		$2,499.99						Bass Pro Shops and Cabela's Exclusive	Only 250 Available	https://www.basspro.com/p/winchester-model-70-safari-express-bolt-action-rifle-cape-buffalo-edition	TRUE
+Cabela's Pro 2400C Compact Laser Rangefinder	4791213	Was 	$199.99				Save $30	10/21/26			https://www.basspro.com/p/cabelas-pro-2400c-laser-rangefinder	FALSE
+Men's RedHead Stronghaul Insulated Waterproof Hunting Boots	3013944	Was 	$119.99	Now 					Save $40	400-gram 3M™ Thinsulate™ Insulation	https://www.basspro.com/p/redhead-stronghaul-insulated-waterproof-hunting-boots-for-men	FALSE
+Men's RedHead Grid Lite Quarter-Zip Long-Sleeve Pullover	3043727		$49.99				Save 30%	10/21/26				FALSE
+Natural Reflections Cane Creek Flannel Long-Sleeve Shirt 	4706743	Was starting at 	$24.99	Now starting at 			Save 32%	9/30/26	Save 20%	Now with an even softer feel	https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt	FALSE
+Bass Pro Shops WeatherSafe Trailer Tite Standard-Duty Trailerable Boat Cover	1669099	Starting at 	$99.99				Save $20	9/30/26		Winterize Your Boat!	https://www.basspro.com/p/bass-pro-shops-weathersafe-trailer-tite-standard-duty-trailerable-boat-covers	FALSE`;
 
-const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1785782921/DigitalCreative/2026/CA/Campaigns/wk-32-06-08-Fall-Hunting-Classic/Homepage/HTW-`;
+const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-0`;
 
 class HotThisWeekItem {
   constructor(
@@ -55,22 +55,71 @@ const htwItems = [];
 const gSafe = [];
 
 function structureData(cdnBaseUrl) {
-  function splitStr(str) {
-    const newStr = str.replaceAll(/\t/g, "\n");
-    const split = newStr.split("\n");
-    return split;
+  function splitTsvRow(row) {
+    const fields = [];
+    let current = "";
+    let inQuotes = false;
+
+    for (let i = 0; i < row.length; i += 1) {
+      const char = row[i];
+
+      if (char === '"') {
+        const nextChar = row[i + 1];
+
+        if (inQuotes && nextChar === '"') {
+          current += '"';
+          i += 1;
+          continue;
+        }
+
+        inQuotes = !inQuotes;
+        continue;
+      }
+
+      if (char === "\t" && !inQuotes) {
+        fields.push(current.trim());
+        current = "";
+        continue;
+      }
+
+      current += char;
+    }
+
+    fields.push(current.trim());
+    return fields;
   }
 
-  const bigArray = splitStr(rawData);
+  function buildRows(str) {
+    return str
+      .split(/\r?\n/)
+      .map((row) => splitTsvRow(row))
+      .filter((fields) => fields.some((field) => field !== ""));
+  }
+
+  function toFixedWidthRow(fields, width) {
+    const row = [...fields];
+
+    if (row.length < width) {
+      row.push(...new Array(width - row.length).fill(""));
+    }
+
+    if (row.length > width) {
+      return row.slice(0, width);
+    }
+
+    return row;
+  }
+
+  const rows = buildRows(rawData);
   let count = 0;
   let id = 0;
 
-  while (bigArray.length > 0) {
+  while (rows.length > 0) {
     count += 1;
     id += 1;
 
-    const data = bigArray.splice(0, 13);
-    //console.log(data);
+    const data = toFixedWidthRow(rows.shift(), 13);
+
     const item = new HotThisWeekItem(
       id,
       count,
@@ -93,8 +142,13 @@ function structureData(cdnBaseUrl) {
     htwItems.push(item);
 
     if (data[12] === "TRUE") {
+      if (rows.length === 0) {
+        break;
+      }
+
       id += 1;
-      const gSafeData = bigArray.splice(0, 13);
+      const gSafeData = toFixedWidthRow(rows.shift(), 13);
+
       const gSafeItem = new HotThisWeekItem(
         id,
         count,
