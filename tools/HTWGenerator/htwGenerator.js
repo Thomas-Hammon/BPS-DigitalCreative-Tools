@@ -1,6 +1,21 @@
 const fs = require("fs/promises");
 const path = require("path");
 
+const STORE_SELECTORS = {
+  bps: ".EMarketingSpotReact.hot-this-week-bps",
+  cab: ".EMarketingSpotReact.hot-this-week-cab",
+  mpw: ".EMarketingSpotReact.hot-this-week-mpw",
+  "bps ca": ".EMarketingSpotReact.hot-this-week-canada",
+};
+
+function getEspotSelector() {
+  const store = String(process.env.HTW_STORE || "bps")
+    .trim()
+    .toLowerCase();
+
+  return STORE_SELECTORS[store] || STORE_SELECTORS.bps;
+}
+
 // ============================================================
 // Fiscal Week
 // ============================================================
@@ -372,6 +387,8 @@ function generateCss() {
 // ============================================================
 
 function generateGoogleSafeScript() {
+  const espotSelector = getEspotSelector();
+
   return `
   <script reactSafe>
     (function () {
@@ -383,7 +400,7 @@ function generateGoogleSafeScript() {
       }
 
       const espot = document.querySelector(
-        ".EMarketingSpotReact.hot-this-week-bps"
+        "${espotSelector}"
       );
 
       if (!espot) {
@@ -431,6 +448,8 @@ function generateGoogleSafeScript() {
 // ============================================================
 
 function generateSplideScript() {
+  const espotSelector = getEspotSelector();
+
   return `
   <script reactSafe>
     (function () {
@@ -442,7 +461,7 @@ function generateSplideScript() {
       }
 
       const espot = document.querySelector(
-        ".EMarketingSpotReact.hot-this-week-bps"
+        "${espotSelector}"
       );
 
       if (!espot) {
