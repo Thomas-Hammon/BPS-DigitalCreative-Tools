@@ -2,10 +2,10 @@ const fs = require("fs/promises");
 const path = require("path");
 
 const STORE_SELECTORS = {
-  bps: ".EMarketingSpotReact.hot-this-week-bps",
-  cab: ".EMarketingSpotReact.hot-this-week-cab",
-  mpw: ".EMarketingSpotReact.hot-this-week-mpw",
-  "bps ca": ".EMarketingSpotReact.hot-this-week-canada",
+  bps: ".EMarketingSpotReact.outfitter-picks-bps",
+  cab: ".EMarketingSpotReact.outfitter-picks-cab",
+  mpw: ".EMarketingSpotReact.outfitter-picks-mpw",
+  "bps ca": ".EMarketingSpotReact.outfitter-picks-ca",
 };
 
 function getEspotSelector() {
