@@ -1,15 +1,15 @@
 const fs = require("fs");
 const path = require("path");
 
-const rawData = `Wicked Ridge by TenPoint Invader M1 Crossbow Package	3915457	Compare to 	$2,599.99	Now 					Save $200	0	https://www.basspro.com/p/wicked-ridge-by-tenpoint-invader-m1-crossbow-package-with-acudraw	FALSE
-Moultrie Edge Solar Cellular Camera	4383549	Was 	$179.99	Now 					Save $70	0	https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo	FALSE
-Minn Kota Ultrex Quest-Series Freshwater Trolling Motor w/ Dual Spectrum CHIRP Sonar 	3796050	Was starting at 	$3,899.99	Now starting at 					Save $300	Micro Remote Included! 	https://www.basspro.com/p/minn-kota-ultrex-quest-series-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-micro-remote	FALSE
-"NEW! Winchester M70 Safari Cape Buffalo 													"	4756680		$2,499.99						Bass Pro Shops and Cabela's Exclusive	Only 250 Available	https://www.basspro.com/p/winchester-model-70-safari-express-bolt-action-rifle-cape-buffalo-edition	TRUE
-Cabela's Pro 2400C Compact Laser Rangefinder	4791213	Was 	$199.99				Save $30	10/21/26			https://www.basspro.com/p/cabelas-pro-2400c-laser-rangefinder	FALSE
-Men's RedHead Stronghaul Insulated Waterproof Hunting Boots	3013944	Was 	$119.99	Now 					Save $40	400-gram 3M™ Thinsulate™ Insulation	https://www.basspro.com/p/redhead-stronghaul-insulated-waterproof-hunting-boots-for-men	FALSE
-Men's RedHead Grid Lite Quarter-Zip Long-Sleeve Pullover	3043727		$49.99				Save 30%	10/21/26				FALSE
-Natural Reflections Cane Creek Flannel Long-Sleeve Shirt 	4706743	Was starting at 	$24.99	Now starting at 			Save 32%	9/30/26	Save 20%	Now with an even softer feel	https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt	FALSE
-Bass Pro Shops WeatherSafe Trailer Tite Standard-Duty Trailerable Boat Cover	1669099	Starting at 	$99.99				Save $20	9/30/26		Winterize Your Boat!	https://www.basspro.com/p/bass-pro-shops-weathersafe-trailer-tite-standard-duty-trailerable-boat-covers	FALSE`;
+const rawData = `Men's RedHead Thermal Henley Long-Sleeve Shirt	3926910	Was starting at 	$24.99	Now 	$19.98				Save up to 33%		https://www.basspro.com/p/redhead-thermal-henley-long-sleeve-shirt-for-men	FALSE
+Humminbird XPLORE 9 CMSI+ CHIRP MEGA SI Fish Finder and MEGA Live 2 Imaging Transducer Bundle	4820284	Was 	$3,099.98	Now 	$2,799.96				Save $300	Minn Kota Compatibility! 	https://www.basspro.com/p/humminbird-xplore-9-cmsi-chirp-mega-si-fish-finder-chartplotter-and-mega-live-2-imaging-transducer-bundle	FALSE
+Ravin Crossbows R29X Sniper Crossbow Package	3995571	Compare to 	$2,849.99	Now 	$1,799.97				Save $1,050	Bass Pro Shops & Cabela's Exclusive	https://www.basspro.com/p/ravin-crossbows-r29x-sniper-crossbow-package-101558121	FALSE
+Men's Ascend Apex LT Mid Waterproof Hiking Boots	4547602	Was 	$200.00	Now 	$149.98				Save 25%	New for 2026!	https://www.basspro.com/p/ascend-apex-lt-mid-waterproof-hiking-boots-for-men	FALSE
+Browning AB3 Pro Composite Bolt-Action Rifle with Vortex Scope	4782454	Was 	$899.99	Now 	$799.98				Save $100	New! Bass Pro Shops and Cabela's Exclusive	https://www.basspro.com/p/browning-ab3-pro-composite-bolt-action-rifle-with-vortex-crossfire-hd-scope	TRUE
+Cabela's Big Outdoorsman Muskoka Chair	3491150	Was 	$89.99			$59.98	Save $30	9/30/26			https://www.basspro.com/p/cabelas-big-outdoorsman-muskoka-chair	FALSE
+Natural Reflections Cane Creek Flannel Shirt	4706749	Was starting at 	$24.99	Now starting at 	$19.98	Starting at $16.98	Save 32%	9/30/26	Now with an even softer feel		https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt	FALSE
+Ascend Path 10 Sit-On-Top Kayak 	4485646		$649.99			$549.98	Save $100	9/30/26	FREE shipping with in-store pickup!		https://www.basspro.com/p/ascend-path-10-sit-on-top-kayak	FALSE
+Men's Ascend Elevate Softshell Jacket	4329316	Was 	$80	Now 	$59.98				Save 25%	Moisture-wicking!	https://www.basspro.com/p/ascend-elevate-softshell-jacket	FALSE`;
 
 const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-0`;
 
@@ -24,11 +24,11 @@ class HotThisWeekItem {
     regPrice,
     nowCallout,
     nowPrice,
-    textCallout,
-    imgCallout,
     CLUBPrice,
     CLUBSavings,
     CLUBExp,
+    textCallout,
+    imgCallout,
     URL,
     googleSafe,
   ) {
@@ -41,11 +41,11 @@ class HotThisWeekItem {
     this.regPrice = regPrice;
     this.nowCallout = nowCallout;
     this.nowPrice = nowPrice;
-    this.textCallout = textCallout;
-    this.imgCallout = imgCallout;
     this.CLUBPrice = CLUBPrice;
     this.CLUBSavings = CLUBSavings;
     this.CLUBExp = CLUBExp;
+    this.textCallout = textCallout;
+    this.imgCallout = imgCallout;
     this.URL = URL;
     this.googleSafe = googleSafe;
   }
@@ -169,6 +169,7 @@ function structureData(cdnBaseUrl) {
       );
 
       gSafe.push(gSafeItem);
+      console.log(gSafeItem);
     }
   }
 
