@@ -2,14 +2,14 @@ const fs = require("fs/promises");
 const path = require("path");
 
 const STORE_SELECTORS = {
-  bps: ".EMarketingSpotReact.hot-this-week-bps",
-  cab: ".EMarketingSpotReact.hot-this-week-cab",
-  mpw: ".EMarketingSpotReact.hot-this-week-mpw",
-  "bps ca": ".EMarketingSpotReact.hot-this-week-canada",
+  bps: ".EMarketingSpotReact.outfitter-picks-bps",
+  cab: ".EMarketingSpotReact.outfitter-picks-cab",
+  mpw: ".EMarketingSpotReact.outfitter-picks-mpw",
+  "bps ca": ".EMarketingSpotReact.outfitter-picks-ca",
 };
 
 function getEspotSelector() {
-  const store = String(process.env.HTW_STORE || "bps")
+  const store = String(process.env.OP_STORE || "bps")
     .trim()
     .toLowerCase();
 
@@ -37,7 +37,7 @@ function getFiscalWeek() {
 // ============================================================
 
 async function loadJson() {
-  const filePath = path.join(__dirname, "htw.json");
+  const filePath = path.join(__dirname, "op.json");
 
   const file = await fs.readFile(filePath, "utf-8");
 
@@ -57,8 +57,8 @@ function isRestrictedItem(item) {
 
 function generateSlide(item, extraClass = "") {
   const slideClass = extraClass
-    ? `splide__slide htw-item ${extraClass}`
-    : "splide__slide htw-item";
+    ? `splide__slide op-item ${extraClass}`
+    : "splide__slide op-item";
 
   const itemHref = item.URL || item.url || "#";
 
@@ -109,8 +109,8 @@ ${regPriceHtml}
               alt="${altText}"
             />
 
-            <div class="htwItemCopy">
-              <p class="p p-black htwTitle">${item.productTitle}</p>
+            <div class="opItemCopy">
+              <p class="p p-black opTitle">${item.productTitle}</p>
 ${pricingHtml}
 ${savingsHtml}
             </div>
@@ -123,8 +123,8 @@ ${savingsHtml}
 // ============================================================
 
 function generateSlides(data) {
-  const items = data.htw.items;
-  const googleSafeItems = data.htw.gSafe || [];
+  const items = data.op.items;
+  const googleSafeItems = data.op.gSafe || [];
 
   return items
     .map((item) => {
@@ -173,24 +173,24 @@ function generateCss() {
       --bps--gray: #7f7f7f;
     }
 
-    /* ==== htwCont ==== */
+    /* ==== opCont ==== */
 
-    .htwCont {
+    .opCont {
       padding-block: 4rem;
       margin-top: 0;
     }
 
-    .htwCont > h2 {
+    .opCont > h2 {
       margin-bottom: 2rem;
     }
 
-    .htwCarouselSplide {
+    .opCarouselSplide {
       max-width: 1440px;
       width: 90%;
       padding: 0 0 1rem;
     }
 
-    .htw-item a {
+    .op-item a {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -199,11 +199,11 @@ function generateCss() {
       font-family: "Open Sans" !important;
     }
 
-    .htw-item .p:hover {
+    .op-item .p:hover {
       text-decoration: none;
     }
 
-    .htw-item a img {
+    .op-item a img {
       width: 100%;
       max-height: 400px;
       -webkit-transition: 0.3s ease-in-out;
@@ -217,11 +217,11 @@ function generateCss() {
       line-height: 16px;
     }
 
-    .htw-item > a > img:hover {
+    .op-item > a > img:hover {
       transform: scale(1.02);
     }
 
-    .htwItemCopy {
+    .opItemCopy {
       display: flex;
       flex-direction: column;
       align-items: start;
@@ -229,11 +229,11 @@ function generateCss() {
       gap: 0.5rem;
     }
 
-    .htwItemCopy > * {
+    .opItemCopy > * {
       text-align: start !important;
     }
 
-    .htwTitle {
+    .opTitle {
       font-weight: 700;
       font-size: 16px;
       line-height: 18px;
@@ -251,7 +251,7 @@ function generateCss() {
       text-align: start;
     }
 
-    .htwCont .splide__track {
+    .opCont .splide__track {
       padding-top: 10px;
       padding-bottom: 0.5rem;
     }
@@ -261,36 +261,36 @@ function generateCss() {
        ======================================================== */
 
     @media (max-width: 768px) {
-      .htwCont {
+      .opCont {
         margin: 2rem 0 0;
         padding: 2rem 0 3rem;
       }
     }
 
     @media (max-width: 480px) {
-      .htwCont {
+      .opCont {
         padding: 0;
       }
 
-      .htw-item a img {
+      .op-item a img {
         width: 80%;
         max-height: 400px;
       }
 
-      .htw-item a {
+      .op-item a {
         align-items: center;
       }
 
-      .htwItemCopy {
+      .opItemCopy {
         width: 80%;
       }
 
-      .htw-item .p {
+      .op-item .p {
         font-size: 14px;
         line-height: 16px;
       }
 
-      .htwCont .htwcarousel-progress {
+      .opCont .opcarousel-progress {
         background: #ccc;
         height: 10px;
         width: 25%;
@@ -301,13 +301,13 @@ function generateCss() {
       }
 
       .EMarketingSpotReact.hot_this_week
-        .htwCont
-        .htwcarousel-progress {
+        .opCont
+        .opcarousel-progress {
         bottom: 1rem;
         margin: 0;
       }
 
-      .htwCont .htwcarousel-progress-bar {
+      .opCont .opcarousel-progress-bar {
         background: #000;
         height: 100%;
         transition: width 400ms ease;
@@ -316,7 +316,7 @@ function generateCss() {
       }
     }
 
-    .htwCont .splide__slide > a > img {
+    .opCont .splide__slide > a > img {
       aspect-ratio: 326 / 400;
     }
 
@@ -324,30 +324,30 @@ function generateCss() {
        Arrows
        ======================================================== */
 
-    .htwCont .splide__arrows--ltr {
+    .opCont .splide__arrows--ltr {
       position: absolute;
       bottom: -2rem;
       right: 1rem;
     }
 
-    .htwCont .splide__arrow--prev {
+    .opCont .splide__arrow--prev {
       left: -3.5rem !important;
     }
 
-    .htwCont .splide__arrow svg {
+    .opCont .splide__arrow svg {
       height: 1.2em !important;
       width: 1.2em !important;
     }
 
-    .htwCont .splide__arrow--next {
+    .opCont .splide__arrow--next {
       right: -1.5rem !important;
     }
 
-    .htwCont .splide__arrow {
+    .opCont .splide__arrow {
       border: solid 2px var(--bps--gray) !important;
     }
 
-    .htwCont
+    .opCont
       .splide
       .splide__arrows
       .splide__arrow {
@@ -358,13 +358,13 @@ function generateCss() {
     }
 
     .EMarketingSpotReact.hot_this_week
-      .htwCont
+      .opCont
       .splide {
       max-width: 1269px;
     }
 
     .EMarketingSpotReact.hot_this_week
-      .htwCont
+      .opCont
       .splide
       .splide__arrows
       .splide__arrow {
@@ -373,7 +373,7 @@ function generateCss() {
     }
 
     @media (max-width: 480px) {
-      .htwCont .splide__arrows--ltr {
+      .opCont .splide__arrows--ltr {
         position: absolute;
         bottom: 1.5rem;
         right: 2rem;
@@ -470,7 +470,7 @@ function generateSplideScript() {
 
       const sliderElement =
         espot.querySelector(
-          ".htwCarouselSplide"
+          ".opCarouselSplide"
         );
 
       if (!sliderElement) {
@@ -479,13 +479,13 @@ function generateSplideScript() {
 
       if (typeof Splide === "undefined") {
         console.error(
-          "HTW: Splide is not loaded."
+          "OP: Splide is not loaded."
         );
 
         return;
       }
 
-      const HTWSplideReact = new Splide(
+      const OPSplideReact = new Splide(
         sliderElement,
         {
           type: "slide",
@@ -511,27 +511,27 @@ function generateSplideScript() {
         },
       );
 
-      HTWSplideReact.mount();
+      OPSplideReact.mount();
 
       const progressBar =
         espot.querySelector(
-          ".htwcarousel-progress"
+          ".opcarousel-progress"
         );
 
       const progressBarFill =
         espot.querySelector(
-          ".htwcarousel-progress-bar"
+          ".opcarousel-progress-bar"
         );
 
       if (
         progressBar &&
         progressBarFill
       ) {
-        HTWSplideReact.on(
+        OPSplideReact.on(
           "move",
           function (newIndex) {
             const maxIndex =
-              HTWSplideReact.length - 1;
+              OPSplideReact.length - 1;
 
             if (maxIndex <= 0) {
               progressBarFill.style.width =
@@ -564,16 +564,16 @@ function generateHtml(data) {
 ${generateCss()}
 
   <section
-    class="sContainer htwCont"
+    class="sContainer opCont"
     aria-roledescription="carousel"
   >
     <h2 class="h2 h-black title">
-      HOT THIS WEEK
+      OUTFITTER PICKS
     </h2>
 
     <div
-      class="splide htwCarouselSplide"
-      aria-label="Hot This Week Carousel"
+      class="splide opCarouselSplide"
+      aria-label="Outfitter Picks Carousel"
     >
       <div class="splide__track">
         <div
@@ -584,9 +584,9 @@ ${slides}
         </div>
       </div>
 
-      <div class="htwcarousel-progress">
+      <div class="opcarousel-progress">
         <div
-          class="htwcarousel-progress-bar"
+          class="opcarousel-progress-bar"
         ></div>
       </div>
     </div>
@@ -606,23 +606,23 @@ async function main() {
   try {
     const data = await loadJson();
 
-    // Validate HTW
-    if (!data?.htw) {
-      throw new Error("data.htw was not found.");
+    // Validate OP
+    if (!data?.op) {
+      throw new Error("data.op was not found.");
     }
 
     // Validate Items
-    if (!Array.isArray(data.htw.items)) {
-      throw new Error("data.htw.items must be an array.");
+    if (!Array.isArray(data.op.items)) {
+      throw new Error("data.op.items must be an array.");
     }
 
-    if (data.htw.items.length === 0) {
-      throw new Error("data.htw.items cannot be empty.");
+    if (data.op.items.length === 0) {
+      throw new Error("data.op.items cannot be empty.");
     }
 
     // Validate Google Safe items
-    if (data.htw.gSafe && !Array.isArray(data.htw.gSafe)) {
-      throw new Error("data.htw.gSafe must be an array.");
+    if (data.op.gSafe && !Array.isArray(data.op.gSafe)) {
+      throw new Error("data.op.gSafe must be an array.");
     }
 
     // Generate HTML
@@ -635,10 +635,7 @@ async function main() {
     const outputDirectory = path.join(__dirname, "output");
 
     // Output filename
-    const outputFile = path.join(
-      outputDirectory,
-      `htw-week-${fiscalWeek}.html`,
-    );
+    const outputFile = path.join(outputDirectory, `op-week-${fiscalWeek}.html`);
 
     // Create output directory if needed
     await fs.mkdir(outputDirectory, {
@@ -649,17 +646,17 @@ async function main() {
     await fs.writeFile(outputFile, html, "utf-8");
 
     // Generator stats
-    const restrictedItems = data.htw.items.filter(isRestrictedItem);
+    const restrictedItems = data.op.items.filter(isRestrictedItem);
 
-    const googleSafeItems = data.htw.gSafe || [];
+    const googleSafeItems = data.op.gSafe || [];
 
     console.log("");
-    console.log("HTW Generator Complete");
+    console.log("OP Generator Complete");
     console.log("----------------------");
 
     console.log(`Fiscal Week: ${fiscalWeek}`);
 
-    console.log(`Normal Items: ${data.htw.items.length}`);
+    console.log(`Normal Items: ${data.op.items.length}`);
 
     console.log(`Restricted Items: ${restrictedItems.length}`);
 
@@ -670,7 +667,7 @@ async function main() {
     console.log("");
   } catch (error) {
     console.error("");
-    console.error("HTW Generator Failed");
+    console.error("OP Generator Failed");
     console.error("--------------------");
     console.error(error);
     console.error("");

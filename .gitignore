@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 tools/HTWGenerator/output/
 tools/HTWGenerator/htw.json
+tools/OPGenerator/output/
+tools/OPGenerator/op.json
