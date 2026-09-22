@@ -408,9 +408,9 @@ function generateGoogleSafeScript() {
       }
 
       const isGoogleSafe =
-        new URLSearchParams(
-          window.location.search
-        ).get("rid") === "20";
+        window.location.search.includes(
+          "rid=20"
+        );
 
       if (isGoogleSafe) {
         const notGoogleSafeSlides =

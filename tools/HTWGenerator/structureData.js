@@ -1,14 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 
-const rawData = `Men's RedHead Thermal Henley Long-Sleeve Shirt	3926910	Was starting at 	$24.99	Now 	$19.98				Save up to 33%		https://www.basspro.com/p/redhead-thermal-henley-long-sleeve-shirt-for-men	FALSE
-Humminbird XPLORE 9 CMSI+ CHIRP MEGA SI Fish Finder and MEGA Live 2 Imaging Transducer Bundle	4820284	Was 	$3,099.98	Now 	$2,799.96				Save $300	Minn Kota Compatibility! 	https://www.basspro.com/p/humminbird-xplore-9-cmsi-chirp-mega-si-fish-finder-chartplotter-and-mega-live-2-imaging-transducer-bundle	FALSE
-Ravin Crossbows R29X Sniper Crossbow Package	3995571	Compare to 	$2,849.99	Now 	$1,799.97				Save $1,050	Bass Pro Shops & Cabela's Exclusive	https://www.basspro.com/p/ravin-crossbows-r29x-sniper-crossbow-package-101558121	FALSE
-Men's Ascend Apex LT Mid Waterproof Hiking Boots	4547602	Was 	$200.00	Now 	$149.98				Save 25%	New for 2026!	https://www.basspro.com/p/ascend-apex-lt-mid-waterproof-hiking-boots-for-men	FALSE
-Browning AB3 Pro Composite Bolt-Action Rifle with Vortex Scope	4782454	Was 	$899.99	Now 	$799.98				Save $100	New! Bass Pro Shops and Cabela's Exclusive	https://www.basspro.com/p/browning-ab3-pro-composite-bolt-action-rifle-with-vortex-crossfire-hd-scope	TRUE
+const rawData = `Ravin Crossbows R29X Sniper Crossbow Package	3995571	Compare to 	$2,849.99	Now 	$1,799.97						https://www.cabelas.com/p/ravin-crossbows-r29x-sniper-crossbow-package-101558121	FALSE
+Browning AB3 Pro Composite Bolt-Action Rifle with Vortex Scope	4782478	Was 	$899.99	Now 	$799.98				Compare to $1049.99 if purchased separately!	New!	https://www.basspro.com/p/browning-ab3-pro-composite-bolt-action-rifle-with-vortex-crossfire-hd-scope	TRUE
+Cabela's 1500R Rangefinder	4791217	Was 	$129.99	Now 	$99.98				Save $30		https://www.basspro.com/p/cabelas-1500r-laser-rangefinder	FALSE
 Cabela's Big Outdoorsman Muskoka Chair	3491150	Was 	$89.99			$59.98	Save $30	9/30/26			https://www.basspro.com/p/cabelas-big-outdoorsman-muskoka-chair	FALSE
-Natural Reflections Cane Creek Flannel Shirt	4706749	Was starting at 	$24.99	Now starting at 	$19.98	Starting at $16.98	Save 32%	9/30/26	Now with an even softer feel		https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt	FALSE
-Ascend Path 10 Sit-On-Top Kayak 	4485646		$649.99			$549.98	Save $100	9/30/26	FREE shipping with in-store pickup!		https://www.basspro.com/p/ascend-path-10-sit-on-top-kayak	FALSE
+Natural Reflections Harbor Sweatshirt	4710632	Was 	$34.99	Now 	$25.98				Save 25%	Relaxed Fit	https://www.basspro.com/p/natural-reflections-harbor-sweatshirt	FALSE
+Garmin LiveScope 2 HD LVS42HD Live-Sonar Transducer	5057196		$2,199.99							NEW for 2026!	https://www.basspro.com/p/garmin-livescope-2-hd-lvs42hd-live-sonar-transducer	FALSE
+Men's Cabela's Iron Ridge GORE-TEX Insulated Hunting Boots	4170654	Was 	$169.99	Now 	$119.98				Save $50	400-gram 3M™ Thinsulate™ Insulation	https://www.basspro.com/p/cabelas-iron-ridge-gore-tex-insulated-hunting-boots-for-men-101649154	FALSE
+Moultrie Edge Solar Cellular Camera	4383549	Was 	$149.99	Now 	$79.98				Save $70	Lowest price of the year!	https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo	FALSE
 Men's Ascend Elevate Softshell Jacket	4329316	Was 	$80	Now 	$59.98				Save 25%	Moisture-wicking!	https://www.basspro.com/p/ascend-elevate-softshell-jacket	FALSE`;
 
 const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-0`;
