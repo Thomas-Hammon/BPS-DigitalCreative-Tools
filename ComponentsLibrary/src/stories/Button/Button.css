@@ -1,0 +1,32 @@
+.shop__btn {
+  margin: 0;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+  transition: 0.4s ease-in-out;
+  background-color: #fff;
+  border: 2px solid #fff;
+  color: #000;
+}
+
+.shop__btn:hover {
+  color: #fff;
+  background-color: transparent;
+}
+
+.shop__black {
+  background-color: #000;
+  border: 2px solid #000;
+  color: #fff;
+}
+
+.shop__black:hover {
+  color: #000;
+  background-color: transparent;
+}
