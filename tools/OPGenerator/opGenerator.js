@@ -146,14 +146,14 @@ function generateSlides(data) {
           `Warning: Item ${item.position} is marked googleSafe but has no matching gSafe replacement.`,
         );
 
-        return generateSlide(item, "notGoogleSafeSlide");
+        return generateSlide(item, "notGoogleSafePick");
       }
 
       // Generate the normal version.
-      const normalSlide = generateSlide(item, "notGoogleSafeSlide");
+      const normalSlide = generateSlide(item, "notGoogleSafePick");
 
       // Generate the Google Safe replacement.
-      const googleSafeSlide = generateSlide(replacement, "googleSafeSlide");
+      const googleSafeSlide = generateSlide(replacement, "googleSafePick");
 
       return `${normalSlide}
 
@@ -182,6 +182,7 @@ function generateCss() {
 
     .opCont > h2 {
       margin-bottom: 2rem;
+      text-transform: uppercase;
     }
 
     .opCarouselSplide {
@@ -415,7 +416,7 @@ function generateGoogleSafeScript() {
       if (isGoogleSafe) {
         const notGoogleSafeSlides =
           espot.querySelectorAll(
-            ".notGoogleSafeSlide"
+            ".notGoogleSafePick"
           );
 
         if (notGoogleSafeSlides.length) {
@@ -428,7 +429,7 @@ function generateGoogleSafeScript() {
       } else {
         const googleSafeSlides =
           espot.querySelectorAll(
-            ".googleSafeSlide"
+            ".googleSafePick"
           );
 
         if (googleSafeSlides.length) {
@@ -568,7 +569,7 @@ ${generateCss()}
     aria-roledescription="carousel"
   >
     <h2 class="h2 h-black title">
-      OUTFITTER PICKS
+      Outfitter Picks
     </h2>
 
     <div

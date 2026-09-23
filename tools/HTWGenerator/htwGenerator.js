@@ -182,6 +182,7 @@ function generateCss() {
 
     .htwCont > h2 {
       margin-bottom: 2rem;
+      text-transform: uppercase;
     }
 
     .htwCarouselSplide {
@@ -568,7 +569,7 @@ ${generateCss()}
     aria-roledescription="carousel"
   >
     <h2 class="h2 h-black title">
-      HOT THIS WEEK
+      Hot This Week
     </h2>
 
     <div

@@ -1,17 +1,16 @@
 const fs = require("fs");
 const path = require("path");
 
-const rawData = `Wicked Ridge by TenPoint Invader M1 Crossbow Package	3915457	Compare to 	$2,599.99	Now 					Save $200	0	https://www.basspro.com/p/wicked-ridge-by-tenpoint-invader-m1-crossbow-package-with-acudraw	FALSE
-Moultrie Edge Solar Cellular Camera	4383549	Was 	$179.99	Now 					Save $70	0	https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo	FALSE
-Minn Kota Ultrex Quest-Series Freshwater Trolling Motor w/ Dual Spectrum CHIRP Sonar 	3796050	Was starting at 	$3,899.99	Now starting at 					Save $300	Micro Remote Included! 	https://www.basspro.com/p/minn-kota-ultrex-quest-series-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-micro-remote	FALSE
-"NEW! Winchester M70 Safari Cape Buffalo 													"	4756680		$2,499.99						Bass Pro Shops and Cabela's Exclusive	Only 250 Available	https://www.basspro.com/p/winchester-model-70-safari-express-bolt-action-rifle-cape-buffalo-edition	TRUE
-Cabela's Pro 2400C Compact Laser Rangefinder	4791213	Was 	$199.99				Save $30	10/21/26			https://www.basspro.com/p/cabelas-pro-2400c-laser-rangefinder	FALSE
-Men's RedHead Stronghaul Insulated Waterproof Hunting Boots	3013944	Was 	$119.99	Now 					Save $40	400-gram 3M™ Thinsulate™ Insulation	https://www.basspro.com/p/redhead-stronghaul-insulated-waterproof-hunting-boots-for-men	FALSE
-Men's RedHead Grid Lite Quarter-Zip Long-Sleeve Pullover	3043727		$49.99				Save 30%	10/21/26				FALSE
-Natural Reflections Cane Creek Flannel Long-Sleeve Shirt 	4706743	Was starting at 	$24.99	Now starting at 			Save 32%	9/30/26	Save 20%	Now with an even softer feel	https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt	FALSE
-Bass Pro Shops WeatherSafe Trailer Tite Standard-Duty Trailerable Boat Cover	1669099	Starting at 	$99.99				Save $20	9/30/26		Winterize Your Boat!	https://www.basspro.com/p/bass-pro-shops-weathersafe-trailer-tite-standard-duty-trailerable-boat-covers	FALSE`;
+const rawData = `RedHead® Frontier Essential Jacket	4746351	Was 	$129.99	Now 	$89.98				Save 20%		https://www.basspro.ca/p/redhead-frontier-essential-jacket	FALSE
+RedHead® Creekside Flannel-Lined Overshirt	4779714	Was 	$59.99 - $64.99	Now 	$44.98 - $47.98				Save 25%		https://www.basspro.ca/p/redhead-creekside-flannel-lined-overshirt	FALSE
+Muck® Men's or Women's Fieldblazer Classic Rubber Boots	2850332	Was 	$185.99	Now 	$124.98				Save $60		https://www.basspro.ca/l/outdoor-traditions-sale-muck-fieldblazers	FALSE
+Cabela's Stainless Steel Tabletop Propane Grill	4705575	Was 	$139.99	Now 	$99.98				Save $40		https://www.basspro.ca/p/cabelas-stainless-steel-tabletop-propane-grill-101939865	FALSE
+Cabela's 7.5'' Heavy-Duty Food Slicer	2834853	Was 	$129.99	Now 	$89.98				Save $40		https://www.basspro.ca/p/cabelas-75-heavy-duty-food-slicer	FALSE
+Cabela's® Heavy-Duty 6LB Sausage Stuffer	2834849	Was 	$249.99	Now 	$174.98				Save $75		https://www.basspro.ca/p/cabelas-heavy-duty-6lb-sausage-stuffer	FALSE
+Bass Pro Shops® Camp Cot	4043876	Was 	$99.99	Now 	$69.98				Save 30%		https://www.basspro.ca/p/bass-pro-shops-camp-cot	FALSE
+Offshore Angler™ Power Plus Trophy Rod and Reel Spinning Combo	2642087	Was 	$59.99 - $74.99	Now 	$44.98 - $55.98				Save 25%		https://www.basspro.ca/p/offshore-angler-power-plus-trophy-rod-and-reel-spinning-combo	FALSE`;
 
-const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-0`;
+const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-`;
 
 class OutfitterPicksItem {
   constructor(
@@ -24,11 +23,11 @@ class OutfitterPicksItem {
     regPrice,
     nowCallout,
     nowPrice,
-    textCallout,
-    imgCallout,
     CLUBPrice,
     CLUBSavings,
     CLUBExp,
+    textCallout,
+    imgCallout,
     URL,
     googleSafe,
   ) {
@@ -41,11 +40,11 @@ class OutfitterPicksItem {
     this.regPrice = regPrice;
     this.nowCallout = nowCallout;
     this.nowPrice = nowPrice;
-    this.textCallout = textCallout;
-    this.imgCallout = imgCallout;
     this.CLUBPrice = CLUBPrice;
     this.CLUBSavings = CLUBSavings;
     this.CLUBExp = CLUBExp;
+    this.textCallout = textCallout;
+    this.imgCallout = imgCallout;
     this.URL = URL;
     this.googleSafe = googleSafe;
   }

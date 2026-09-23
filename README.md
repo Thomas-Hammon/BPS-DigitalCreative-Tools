@@ -16,7 +16,8 @@ Hello! Welcome to the BPS Digital Creative tools repository.
 2. Generate Gallery JSON - Used for ????
 3. Components Library
 4. HTWGenerator
-   a. structureData.js
+5. OPGenerator
+6. PLPSliderGenerator
 
 ## Contains Components Library (StoryBook)
 
@@ -24,19 +25,22 @@ Hello! Welcome to the BPS Digital Creative tools repository.
 2. Run "npm install" in the terminal.
 3. Run "npm run storybook" in the terminal.
 
-# HTW Generator
+# HTML Generators
+
+There are three HTML generators so far, and they all follow the same file structure.
 
 1. Run:
-   cd tools/HTWGenerator
+   cd tools/_desired generator here_
 
-2. Paste the Excel/tab-delimited HTW source data into `rawData` in `structureData.js`.
+2. Paste the Excel/tab-delimited source data into `rawData` in `structureData.js`.
+   a. for OP and HTW generators, paste the base URL into 'cloudinaryBaseURL' in the same file.
 
 3. Run:
    node run.js
 
 4. `run.js` will automatically:
    - run `structureData.js`
-   - update `htw.json`
-   - run `htwGenerator.js`
+   - update the .json file
+   - run `~Generator.js`
 
-5. The generated HTW HTML file will be written to `tools/HTWGenerator/output/`.
+5. The generated HTW HTML file will be written to the output folder.

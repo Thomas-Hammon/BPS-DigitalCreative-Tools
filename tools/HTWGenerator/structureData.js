@@ -1,17 +1,17 @@
 const fs = require("fs");
 const path = require("path");
 
-const rawData = `Ravin Crossbows R29X Sniper Crossbow Package	3995571	Compare to 	$2,849.99	Now 	$1,799.97						https://www.cabelas.com/p/ravin-crossbows-r29x-sniper-crossbow-package-101558121	FALSE
-Browning AB3 Pro Composite Bolt-Action Rifle with Vortex Scope	4782478	Was 	$899.99	Now 	$799.98				Compare to $1049.99 if purchased separately!	New!	https://www.basspro.com/p/browning-ab3-pro-composite-bolt-action-rifle-with-vortex-crossfire-hd-scope	TRUE
-Cabela's 1500R Rangefinder	4791217	Was 	$129.99	Now 	$99.98				Save $30		https://www.basspro.com/p/cabelas-1500r-laser-rangefinder	FALSE
-Cabela's Big Outdoorsman Muskoka Chair	3491150	Was 	$89.99			$59.98	Save $30	9/30/26			https://www.basspro.com/p/cabelas-big-outdoorsman-muskoka-chair	FALSE
-Natural Reflections Harbor Sweatshirt	4710632	Was 	$34.99	Now 	$25.98				Save 25%	Relaxed Fit	https://www.basspro.com/p/natural-reflections-harbor-sweatshirt	FALSE
-Garmin LiveScope 2 HD LVS42HD Live-Sonar Transducer	5057196		$2,199.99							NEW for 2026!	https://www.basspro.com/p/garmin-livescope-2-hd-lvs42hd-live-sonar-transducer	FALSE
-Men's Cabela's Iron Ridge GORE-TEX Insulated Hunting Boots	4170654	Was 	$169.99	Now 	$119.98				Save $50	400-gram 3M™ Thinsulate™ Insulation	https://www.basspro.com/p/cabelas-iron-ridge-gore-tex-insulated-hunting-boots-for-men-101649154	FALSE
-Moultrie Edge Solar Cellular Camera	4383549	Was 	$149.99	Now 	$79.98				Save $70	Lowest price of the year!	https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo	FALSE
-Men's Ascend Elevate Softshell Jacket	4329316	Was 	$80	Now 	$59.98				Save 25%	Moisture-wicking!	https://www.basspro.com/p/ascend-elevate-softshell-jacket	FALSE`;
+const rawData = `Cabela's® Specialist Ground Blind Combo	3870154	Was 	$349.99	Now 	$219.98				Save $130		https://www.basspro.ca/p/cabelas-specialist-ground-blind-combo	FALSE
+SPYPOINT® FLEX-M Cellular Trail Camera 2-Pack	4041719	Was 	$289.99	Now 	$169.99				Save 40%		https://www.basspro.ca/p/spypoint-flex-m-cellular-trail-camera-2-pack-101848397	FALSE
+RedHead® Silent Stalker Elite Parka or Bibs	3929199	Was 	$179.99 - $239.99	Now 	$149.98 - $209.98				Save $30		https://www.basspro.ca/l/outdoor-traditions-sale-rh-silent-stalker	FALSE
+Vortex® Diamondback HD 10x42 Binocular in TrueTimber VSX	4269639	Was 	$449.99	Now 	$249.98				Save $200		https://www.basspro.ca/p/vortex-diamondback-hd-binoculars-in-truetimber-strata	FALSE
+RedHead® Men's or Youth Expedition Ultra Bone-Dry Hunting Boots	2676172	Was 	$119.99 - $179.99	Now 	$79.98 - $139.98				Save $40		https://www.basspro.ca/l/outdoor-traditions-sale-rh expeditions	FALSE
+Summit® Viper® SD Ultra Climbing Treestand	1905918	Was 	$529.99	Now 	$459.98				Save $70		https://www.basspro.ca/p/summit-viper-sd-ultra-climbing-treestand-12031305005521	FALSE
+Cabela's® Multi-Day Hunting Backpack	4105734	Was 	$299.99	Now 	$239.98				Save $60		https://www.basspro.ca/p/cabelas-multi-day-hunting-backpack	FALSE
+Wicked Ridge Invader M1 Crossbow Package with ACUdraw & Pro-View 400 Scope	3915457	Was 	$1,099.99	Now 	$699.98				Save $400	A BASS PRO SHOPS & CABELA'S EXCLUSIVE!	https://www.basspro.ca/p/wicked-ridge-invader-m1-crossbow-package-with-acudraw-pro-view-400-scope	TRUE
+Cabela's GunDog Kennel Cot	4490953	Was 	$58.99 - $73.99	Now 	$43.98 - $54.98				Save 25%		https://www.basspro.ca/p/cabelas-gundog-kennel-cot	FALSE`;
 
-const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-0`;
+const cloudinaryBaseULR = `https://assets.basspro.com/image/upload/v1790175270/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/HTW-`;
 
 class HotThisWeekItem {
   constructor(
