@@ -1,258 +1,239 @@
+<style type="text/css">
+  :root {
+    --bps--gray: #7f7f7f;
+  }
 
+  /* ==== opCont ==== */
 
+  .opCont {
+    padding-block: 4rem;
+    margin-top: 0;
+  }
 
-  <style type="text/css">
-    :root {
-      --bps--gray: #7f7f7f;
-    }
+  .opCont > h2 {
+    margin-bottom: 2rem;
+  }
 
-    /* ==== opCont ==== */
+  .opCarouselSplide {
+    max-width: 1440px;
+    width: 90%;
+    padding: 0 0 1rem;
+  }
 
-    .opCont {
-      padding-block: 4rem;
-      margin-top: 0;
-    }
+  .op-item a {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 1rem;
+    font-family: "Open Sans" !important;
+  }
 
-    .opCont > h2 {
-      margin-bottom: 2rem;
-    }
+  .op-item .p:hover {
+    text-decoration: none;
+  }
 
-    .opCarouselSplide {
-      max-width: 1440px;
-      width: 90%;
-      padding: 0 0 1rem;
-    }
+  .op-item a img {
+    width: 100%;
+    max-height: 400px;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
 
-    .op-item a {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100%;
-      gap: 1rem;
-      font-family: "Open Sans" !important;
-    }
+  .color-savings-message {
+    color: #840000;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+  }
 
-    .op-item .p:hover {
-      text-decoration: none;
-    }
+  .op-item > a > img:hover {
+    transform: scale(1.02);
+  }
 
-    .op-item a img {
-      width: 100%;
-      max-height: 400px;
-      -webkit-transition: 0.3s ease-in-out;
-      transition: 0.3s ease-in-out;
-    }
+  .opItemCopy {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    gap: 0.5rem;
+  }
 
-    .color-savings-message {
-      color: #840000;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 16px;
-    }
+  .opItemCopy > * {
+    text-align: start !important;
+  }
 
-    .op-item > a > img:hover {
-      transform: scale(1.02);
-    }
+  .opTitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+  }
 
-    .opItemCopy {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      text-align: start;
-      gap: 0.5rem;
-    }
+  .pricingDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
 
-    .opItemCopy > * {
-      text-align: start !important;
-    }
+  .pricingDiv > * {
+    font-size: 12px;
+    text-align: start;
+  }
 
-    .opTitle {
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 18px;
-    }
+  .opCont .splide__track {
+    padding-top: 10px;
+    padding-bottom: 0.5rem;
+  }
 
-    .pricingDiv {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-    }
-
-    .pricingDiv > * {
-      font-size: 12px;
-      text-align: start;
-    }
-
-    .opCont .splide__track {
-      padding-top: 10px;
-      padding-bottom: 0.5rem;
-    }
-
-    /* ========================================================
+  /* ========================================================
        Media Queries
        ======================================================== */
 
-    @media (max-width: 768px) {
-      .opCont {
-        margin: 2rem 0 0;
-        padding: 2rem 0 3rem;
-      }
+  @media (max-width: 768px) {
+    .opCont {
+      margin: 2rem 0 0;
+      padding: 2rem 0 3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .opCont {
+      padding: 0;
     }
 
-    @media (max-width: 480px) {
-      .opCont {
-        padding: 0;
-      }
-
-      .op-item a img {
-        width: 80%;
-        max-height: 400px;
-      }
-
-      .op-item a {
-        align-items: center;
-      }
-
-      .opItemCopy {
-        width: 80%;
-      }
-
-      .op-item .p {
-        font-size: 14px;
-        line-height: 16px;
-      }
-
-      .opCont .opcarousel-progress {
-        background: #ccc;
-        height: 10px;
-        width: 25%;
-        margin: 1rem 0;
-        border-radius: 8px;
-        position: relative;
-        left: 10%;
-      }
-
-      .EMarketingSpotReact.hot_this_week
-        .opCont
-        .opcarousel-progress {
-        bottom: 1rem;
-        margin: 0;
-      }
-
-      .opCont .opcarousel-progress-bar {
-        background: #000;
-        height: 100%;
-        transition: width 400ms ease;
-        width: 0;
-        border-radius: 8px;
-      }
+    .op-item a img {
+      width: 80%;
+      max-height: 400px;
     }
 
-    .opCont .splide__slide > a > img {
-      aspect-ratio: 326 / 400;
+    .op-item a {
+      align-items: center;
     }
 
-    /* ========================================================
+    .opItemCopy {
+      width: 80%;
+    }
+
+    .op-item .p {
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .opCont .opcarousel-progress {
+      background: #ccc;
+      height: 10px;
+      width: 25%;
+      margin: 1rem 0;
+      border-radius: 8px;
+      position: relative;
+      left: 10%;
+    }
+
+    .EMarketingSpotReact.hot_this_week .opCont .opcarousel-progress {
+      bottom: 1rem;
+      margin: 0;
+    }
+
+    .opCont .opcarousel-progress-bar {
+      background: #000;
+      height: 100%;
+      transition: width 400ms ease;
+      width: 0;
+      border-radius: 8px;
+    }
+  }
+
+  .opCont .splide__slide > a > img {
+    aspect-ratio: 326 / 400;
+  }
+
+  /* ========================================================
        Arrows
        ======================================================== */
 
+  .opCont .splide__arrows--ltr {
+    position: absolute;
+    bottom: -2rem;
+    right: 1rem;
+  }
+
+  .opCont .splide__arrow--prev {
+    left: -3.5rem !important;
+  }
+
+  .opCont .splide__arrow svg {
+    height: 1.2em !important;
+    width: 1.2em !important;
+  }
+
+  .opCont .splide__arrow--next {
+    right: -1.5rem !important;
+  }
+
+  .opCont .splide__arrow {
+    border: solid 2px var(--bps--gray) !important;
+  }
+
+  .opCont .splide .splide__arrows .splide__arrow {
+    background: #ccc;
+    height: 2em;
+    width: 2em;
+    border-radius: 50%;
+  }
+
+  .EMarketingSpotReact.hot_this_week .opCont .splide {
+    max-width: 1269px;
+  }
+
+  .EMarketingSpotReact.hot_this_week
+    .opCont
+    .splide
+    .splide__arrows
+    .splide__arrow {
+    height: 32px !important;
+    width: 32px !important;
+  }
+
+  @media (max-width: 480px) {
     .opCont .splide__arrows--ltr {
       position: absolute;
-      bottom: -2rem;
-      right: 1rem;
+      bottom: 1.5rem;
+      right: 2rem;
     }
+  }
+</style>
 
-    .opCont .splide__arrow--prev {
-      left: -3.5rem !important;
-    }
+<section class="sContainer opCont" aria-roledescription="carousel">
+  <h2 class="h2 h-black title">OUTFITTER PICKS</h2>
 
-    .opCont .splide__arrow svg {
-      height: 1.2em !important;
-      width: 1.2em !important;
-    }
-
-    .opCont .splide__arrow--next {
-      right: -1.5rem !important;
-    }
-
-    .opCont .splide__arrow {
-      border: solid 2px var(--bps--gray) !important;
-    }
-
-    .opCont
-      .splide
-      .splide__arrows
-      .splide__arrow {
-      background: #ccc;
-      height: 2em;
-      width: 2em;
-      border-radius: 50%;
-    }
-
-    .EMarketingSpotReact.hot_this_week
-      .opCont
-      .splide {
-      max-width: 1269px;
-    }
-
-    .EMarketingSpotReact.hot_this_week
-      .opCont
-      .splide
-      .splide__arrows
-      .splide__arrow {
-      height: 32px !important;
-      width: 32px !important;
-    }
-
-    @media (max-width: 480px) {
-      .opCont .splide__arrows--ltr {
-        position: absolute;
-        bottom: 1.5rem;
-        right: 2rem;
-      }
-    }
-  </style>
-
-  <section
-    class="sContainer opCont"
-    aria-roledescription="carousel"
-  >
-    <h2 class="h2 h-black title">
-      OUTFITTER PICKS
-    </h2>
-
-    <div
-      class="splide opCarouselSplide"
-      aria-label="Outfitter Picks Carousel"
-    >
-      <div class="splide__track">
-        <div
-          class="splide__list"
-          role="presentation"
-        >
-
+  <div class="splide opCarouselSplide" aria-label="Outfitter Picks Carousel">
+    <div class="splide__track">
+      <div class="splide__list" role="presentation">
         <div
           class="splide__slide op-item"
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/wicked-ridge-by-tenpoint-invader-m1-crossbow-package-with-acudraw">
+          <a href="https://www.basspro.ca/p/redhead-frontier-essential-jacket">
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-01.png?$bpssite_default$"
-              alt="Save $200 | 0"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-1.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Wicked Ridge by TenPoint Invader M1 Crossbow Package</p>
+              <p class="p p-black opTitle">
+                RedHead® Frontier Essential Jacket
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $89.98</p>
 
+                <p class="p p-black regPrice">Was $129.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Compare to$2,599.99</p>
-            </div>
-
+              <p class="color-savings-message">Save 20%</p>
             </div>
           </a>
         </div>
@@ -262,22 +243,27 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/moultrie-edge-solar-panel-camera-combo">
+          <a
+            href="https://www.basspro.ca/p/redhead-creekside-flannel-lined-overshirt"
+          >
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-02.png?$bpssite_default$"
-              alt="Save $70 | 0"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-2.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Moultrie Edge Solar Cellular Camera</p>
+              <p class="p p-black opTitle">
+                RedHead® Creekside Flannel-Lined Overshirt
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $44.98 - $47.98</p>
 
+                <p class="p p-black regPrice">Was $59.99 - $64.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Was$179.99</p>
-            </div>
-
+              <p class="color-savings-message">Save 25%</p>
             </div>
           </a>
         </div>
@@ -287,73 +273,27 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/minn-kota-ultrex-quest-series-freshwater-trolling-motor-with-dual-spectrum-chirp-sonar-and-micro-remote">
+          <a
+            href="https://www.basspro.ca/l/outdoor-traditions-sale-muck-fieldblazers"
+          >
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-03.png?$bpssite_default$"
-              alt="Save $300 | Micro Remote Included!"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-3.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Minn Kota Ultrex Quest-Series Freshwater Trolling Motor w/ Dual Spectrum CHIRP Sonar</p>
+              <p class="p p-black opTitle">
+                Muck® Men's or Women's Fieldblazer Classic Rubber Boots
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $124.98</p>
 
+                <p class="p p-black regPrice">Was $185.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Was starting at$3,899.99</p>
-            </div>
-
-            </div>
-          </a>
-        </div>
-
-        <div
-          class="splide__slide op-item notGoogleSafeSlide"
-          role="group"
-          aria-roledescription="slide"
-        >
-          <a href="https://www.basspro.com/p/winchester-model-70-safari-express-bolt-action-rifle-cape-buffalo-edition">
-            <img
-              loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-04.png?$bpssite_default$"
-              alt="Bass Pro Shops and Cabela's Exclusive | Only 250 Available"
-            />
-
-            <div class="opItemCopy">
-              <p class="p p-black opTitle">NEW! Winchester M70 Safari Cape Buffalo</p>
-
-            <div class="pricingDiv">
-
-
-              <p class="p p-black regPrice">$2,499.99</p>
-            </div>
-
-            </div>
-          </a>
-        </div>
-
-
-        <div
-          class="splide__slide op-item googleSafeSlide"
-          role="group"
-          aria-roledescription="slide"
-        >
-          <a href="https://www.basspro.com/p/cabelas-pro-2400c-laser-rangefinder">
-            <img
-              loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-04-GS.png?$bpssite_default$"
-              alt="Save $30 | 10/21/26"
-            />
-
-            <div class="opItemCopy">
-              <p class="p p-black opTitle">Cabela's Pro 2400C Compact Laser Rangefinder</p>
-
-            <div class="pricingDiv">
-
-
-              <p class="p p-black regPrice">Was$199.99</p>
-            </div>
-
+              <p class="color-savings-message">Save $60</p>
             </div>
           </a>
         </div>
@@ -363,22 +303,27 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/redhead-stronghaul-insulated-waterproof-hunting-boots-for-men">
+          <a
+            href="https://www.basspro.ca/p/cabelas-stainless-steel-tabletop-propane-grill-101939865"
+          >
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-05.png?$bpssite_default$"
-              alt="Save $40 | 400-gram 3M™ Thinsulate™ Insulation"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-4.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Men's RedHead Stronghaul Insulated Waterproof Hunting Boots</p>
+              <p class="p p-black opTitle">
+                Cabela's Stainless Steel Tabletop Propane Grill
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $99.98</p>
 
+                <p class="p p-black regPrice">Was $139.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Was$119.99</p>
-            </div>
-
+              <p class="color-savings-message">Save $40</p>
             </div>
           </a>
         </div>
@@ -388,22 +333,25 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="#">
+          <a href="https://www.basspro.ca/p/cabelas-75-heavy-duty-food-slicer">
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-06.png?$bpssite_default$"
-              alt="Save 30% | 10/21/26"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-5.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Men's RedHead Grid Lite Quarter-Zip Long-Sleeve Pullover</p>
+              <p class="p p-black opTitle">
+                Cabela's 7.5'' Heavy-Duty Food Slicer
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $89.98</p>
 
+                <p class="p p-black regPrice">Was $129.99</p>
+              </div>
 
-              <p class="p p-black regPrice">$49.99</p>
-            </div>
-
+              <p class="color-savings-message">Save $40</p>
             </div>
           </a>
         </div>
@@ -413,22 +361,27 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/natural-reflections-cane-creek-long-sleeve-flannel-shirt">
+          <a
+            href="https://www.basspro.ca/p/cabelas-heavy-duty-6lb-sausage-stuffer"
+          >
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-07.png?$bpssite_default$"
-              alt="Save 32% | 9/30/26 | Save 20% | Now with an even softer feel"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-6.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Natural Reflections Cane Creek Flannel Long-Sleeve Shirt</p>
+              <p class="p p-black opTitle">
+                Cabela's® Heavy-Duty 6LB Sausage Stuffer
+              </p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $174.98</p>
 
+                <p class="p p-black regPrice">Was $249.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Was starting at$24.99</p>
-            </div>
-
+              <p class="color-savings-message">Save $75</p>
             </div>
           </a>
         </div>
@@ -438,186 +391,170 @@
           role="group"
           aria-roledescription="slide"
         >
-          <a href="https://www.basspro.com/p/bass-pro-shops-weathersafe-trailer-tite-standard-duty-trailerable-boat-covers">
+          <a href="https://www.basspro.ca/p/bass-pro-shops-camp-cot">
             <img
               loading="lazy"
-              src="https://assets.basspro.com/image/upload/v1789401418/DigitalCreative/2026/BPS_CAB/Campaigns/Wk38_FallSavings_17-Sep/Homepage/HTW/BPS-HTW-08.png?$bpssite_default$"
-              alt="Save $20 | 9/30/26 | Winterize Your Boat!"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-7.png?$bpssite_default$"
+              alt=""
             />
 
             <div class="opItemCopy">
-              <p class="p p-black opTitle">Bass Pro Shops WeatherSafe Trailer Tite Standard-Duty Trailerable Boat Cover</p>
+              <p class="p p-black opTitle">Bass Pro Shops® Camp Cot</p>
 
-            <div class="pricingDiv">
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $69.98</p>
 
+                <p class="p p-black regPrice">Was $99.99</p>
+              </div>
 
-              <p class="p p-black regPrice">Starting at$99.99</p>
-            </div>
-
+              <p class="color-savings-message">Save 30%</p>
             </div>
           </a>
         </div>
-        </div>
-      </div>
 
-      <div class="opcarousel-progress">
         <div
-          class="opcarousel-progress-bar"
-        ></div>
+          class="splide__slide op-item"
+          role="group"
+          aria-roledescription="slide"
+        >
+          <a
+            href="https://www.basspro.ca/p/offshore-angler-power-plus-trophy-rod-and-reel-spinning-combo"
+          >
+            <img
+              loading="lazy"
+              src="https://assets.basspro.com/image/upload/v1790175281/DigitalCreative/2026/CA/Campaigns/wk-39-09-24-Outdoor-Traditions/Homepage/OP-8.png?$bpssite_default$"
+              alt=""
+            />
+
+            <div class="opItemCopy">
+              <p class="p p-black opTitle">
+                Offshore Angler™ Power Plus Trophy Rod and Reel Spinning Combo
+              </p>
+
+              <div class="pricingDiv">
+                <p class="p p-black salePrice">Now $44.98 - $55.98</p>
+
+                <p class="p p-black regPrice">Was $59.99 - $74.99</p>
+              </div>
+
+              <p class="color-savings-message">Save 25%</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
-  </section>
 
+    <div class="opcarousel-progress">
+      <div class="opcarousel-progress-bar"></div>
+    </div>
+  </div>
+</section>
 
-  <script reactSafe>
-    (function () {
-      if (
-        typeof window === "undefined" ||
-        typeof document === "undefined"
-      ) {
-        return;
+<script reactSafe>
+  (function () {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return;
+    }
+
+    const espot = document.querySelector(
+      ".EMarketingSpotReact.outfitter-picks-ca",
+    );
+
+    if (!espot) {
+      return;
+    }
+
+    const isGoogleSafe = window.location.search.includes("rid=20");
+
+    if (isGoogleSafe) {
+      const notGoogleSafePicks = espot.querySelectorAll(".notGoogleSafePick");
+
+      if (notGoogleSafePicks.length) {
+        notGoogleSafePicks.forEach(function (slide) {
+          slide.remove();
+        });
       }
+    } else {
+      const googleSafePicks = espot.querySelectorAll(".googleSafePick");
 
-      const espot = document.querySelector(
-        ".EMarketingSpotReact.hot-this-week-bps"
-      );
-
-      if (!espot) {
-        return;
+      if (googleSafePicks.length) {
+        googleSafePicks.forEach(function (slide) {
+          slide.remove();
+        });
       }
+    }
+  })();
+</script>
 
-      const isGoogleSafe =
-        new URLSearchParams(
-          window.location.search
-        ).get("rid") === "20";
+<script reactSafe>
+  (function () {
+    if (typeof window === "undefined" || typeof document === "undefined") {
+      return;
+    }
 
-      if (isGoogleSafe) {
-        const notGoogleSafeSlides =
-          espot.querySelectorAll(
-            ".notGoogleSafeSlide"
-          );
+    const espot = document.querySelector(
+      ".EMarketingSpotReact.outfitter-picks-ca",
+    );
 
-        if (notGoogleSafeSlides.length) {
-          notGoogleSafeSlides.forEach(
-            function (slide) {
-              slide.remove();
-            }
-          );
-        }
-      } else {
-        const googleSafeSlides =
-          espot.querySelectorAll(
-            ".googleSafeSlide"
-          );
+    if (!espot) {
+      return;
+    }
 
-        if (googleSafeSlides.length) {
-          googleSafeSlides.forEach(
-            function (slide) {
-              slide.remove();
-            }
-          );
-        }
-      }
-    })();
-  </script>
+    const sliderElement = espot.querySelector(".opCarouselSplide");
 
+    if (!sliderElement) {
+      return;
+    }
 
-  <script reactSafe>
-    (function () {
-      if (
-        typeof window === "undefined" ||
-        typeof document === "undefined"
-      ) {
-        return;
-      }
+    if (typeof Splide === "undefined") {
+      console.error("OP: Splide is not loaded.");
 
-      const espot = document.querySelector(
-        ".EMarketingSpotReact.hot-this-week-bps"
-      );
+      return;
+    }
 
-      if (!espot) {
-        return;
-      }
+    const OPSplideReact = new Splide(sliderElement, {
+      type: "slide",
+      perPage: 4,
+      gap: "2rem",
+      perMove: 1,
+      pagination: false,
 
-      const sliderElement =
-        espot.querySelector(
-          ".opCarouselSplide"
-        );
-
-      if (!sliderElement) {
-        return;
-      }
-
-      if (typeof Splide === "undefined") {
-        console.error(
-          "OP: Splide is not loaded."
-        );
-
-        return;
-      }
-
-      const OPSplideReact = new Splide(
-        sliderElement,
-        {
-          type: "slide",
-          perPage: 4,
-          gap: "2rem",
-          perMove: 1,
-          pagination: false,
-
-          breakpoints: {
-            1024: {
-              perPage: 3,
-            },
-
-            768: {
-              perPage: 2,
-            },
-
-            480: {
-              perPage: 1,
-              focus: "center",
-            },
-          },
+      breakpoints: {
+        1024: {
+          perPage: 3,
         },
-      );
 
-      OPSplideReact.mount();
+        768: {
+          perPage: 2,
+        },
 
-      const progressBar =
-        espot.querySelector(
-          ".opcarousel-progress"
-        );
+        480: {
+          perPage: 1,
+          focus: "center",
+        },
+      },
+    });
 
-      const progressBarFill =
-        espot.querySelector(
-          ".opcarousel-progress-bar"
-        );
+    OPSplideReact.mount();
 
-      if (
-        progressBar &&
-        progressBarFill
-      ) {
-        OPSplideReact.on(
-          "move",
-          function (newIndex) {
-            const maxIndex =
-              OPSplideReact.length - 1;
+    const progressBar = espot.querySelector(".opcarousel-progress");
 
-            if (maxIndex <= 0) {
-              progressBarFill.style.width =
-                "100%";
+    const progressBarFill = espot.querySelector(".opcarousel-progress-bar");
 
-              return;
-            }
+    if (progressBar && progressBarFill) {
+      OPSplideReact.on("move", function (newIndex) {
+        const maxIndex = OPSplideReact.length - 1;
 
-            const progress =
-              (newIndex / maxIndex) * 100;
+        if (maxIndex <= 0) {
+          progressBarFill.style.width = "100%";
 
-            progressBarFill.style.width =
-              progress + "%";
-          },
-        );
-      }
-    })();
-  </script>
+          return;
+        }
+
+        const progress = (newIndex / maxIndex) * 100;
+
+        progressBarFill.style.width = progress + "%";
+      });
+    }
+  })();
+</script>

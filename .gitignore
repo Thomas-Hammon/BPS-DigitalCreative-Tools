@@ -4,3 +4,5 @@ tools/HTWGenerator/output/
 tools/HTWGenerator/htw.json
 tools/OPGenerator/output/
 tools/OPGenerator/op.json
+tools/PLPSliderGenerator/output/
+tools/PLPSliderGenerator/plpSlider.json

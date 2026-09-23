@@ -1,9 +1,9 @@
 const fs = require("fs/promises");
 const path = require("path");
+const pageIDs = [];
 
 async function loadJson() {
   const filePath = path.join(__dirname, "plpSlider.json");
-
   const file = await fs.readFile(filePath, "utf-8");
 
   return JSON.parse(file);
@@ -11,6 +11,7 @@ async function loadJson() {
 
 function createTile(plpTile) {
   const gSafe = plpTile.googleSafe;
+  pageIDs.push(plpTile.pageID);
 
   return `
   
@@ -38,16 +39,7 @@ function generateTiles(data) {
 function generateHtml(data) {
   const tileArr = generateTiles(data);
 
-  return `<link
-  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
-  rel="stylesheet"
-/>
-
-<link
-  rel="stylesheet"
-  href="https://assets.basspro.com/raw/upload/DigitalCreative/Global-Site-Resources/PLP-Hero/PLP-Slider.css"
-/>
-
+  return `
 <div class="full-width plpSliderCont">
   <section
     class="splide"
@@ -78,12 +70,7 @@ function generateHtml(data) {
     </div>
   </section>
 </div>
-
-<!-- prettier-ignore -->
-<script reactSafe src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-
-<!-- prettier-ignore -->
-<script reactSafe src="https://assets.basspro.com/raw/upload/DigitalCreative/Global-Site-Resources/PLP-Hero/PLP-Slider.js"></script>`;
+`;
 }
 
 async function main() {
