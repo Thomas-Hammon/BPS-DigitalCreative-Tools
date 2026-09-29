@@ -110,6 +110,10 @@ function structureData(cdnBaseUrl) {
     return row;
   }
 
+  function stripDomain(value) {
+    return value.trim().replace(/^(?:https?:\/\/)?[^/]+\.[^/]+(?=\/|$)/i, "");
+  }
+
   const rows = buildRows(rawData);
   let count = 0;
   let id = 0;
@@ -135,7 +139,7 @@ function structureData(cdnBaseUrl) {
       data[8],
       data[9],
       data[10],
-      data[11],
+      stripDomain(data[11]),
       data[12],
     );
 
@@ -164,7 +168,7 @@ function structureData(cdnBaseUrl) {
         gSafeData[8],
         gSafeData[9],
         gSafeData[10],
-        gSafeData[11],
+        stripDomain(gSafeData[11]),
         gSafeData[12],
       );
 
