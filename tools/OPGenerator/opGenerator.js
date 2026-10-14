@@ -52,6 +52,16 @@ function isRestrictedItem(item) {
 }
 
 // ============================================================
+// Generate Slide Marker
+// ============================================================
+
+function generateSlideMarker(item, index) {
+  const itemNumber = item?.position ?? index + 1;
+
+  return `<!-- ======Slide Item ${itemNumber}======= -->`;
+}
+
+// ============================================================
 // Generate Individual Slide
 // ============================================================
 
@@ -127,12 +137,13 @@ function generateSlides(data) {
   const googleSafeItems = data.op.gSafe || [];
 
   return items
-    .map((item) => {
+    .map((item, index) => {
       const isRestricted = isRestrictedItem(item);
+      const marker = generateSlideMarker(item, index);
 
       // Normal item. No replacement needed.
       if (!isRestricted) {
-        return generateSlide(item);
+        return `${marker}\n${generateSlide(item)}`;
       }
 
       // Find Google Safe replacement by matching ID.
@@ -146,7 +157,7 @@ function generateSlides(data) {
           `Warning: Item ${item.position} is marked googleSafe but has no matching gSafe replacement.`,
         );
 
-        return generateSlide(item, "notGoogleSafePick");
+        return `${marker}\n${generateSlide(item, "notGoogleSafePick")}`;
       }
 
       // Generate the normal version.
@@ -155,9 +166,7 @@ function generateSlides(data) {
       // Generate the Google Safe replacement.
       const googleSafeSlide = generateSlide(replacement, "googleSafePick");
 
-      return `${normalSlide}
-
-${googleSafeSlide}`;
+      return `${marker}\n${normalSlide}\n\n${generateSlideMarker(replacement, index)}\n${googleSafeSlide}`;
     })
     .join("\n");
 }
