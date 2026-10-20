@@ -25,6 +25,16 @@ function normalizeStore(input) {
   );
 }
 
+function normalizeSlider(number) {
+  if (number === "1") {
+    return "HTW";
+  } else if (number === "2") {
+    return "OP";
+  } else {
+    return null;
+  }
+}
+
 function runScript(scriptName, extraEnv = {}) {
   const scriptPath = path.join(__dirname, scriptName);
 
@@ -74,13 +84,46 @@ async function promptForStore() {
   }
 }
 
+async function promptForSliderType() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  try {
+    while (true) {
+      const answer = await rl.question(
+        "What kind of slider is this? (1 = Hot This Week, 2 = Outfitter Picks):",
+      );
+
+      const selectedSlider = normalizeSlider(answer);
+
+      if (selectedSlider) {
+        return selectedSlider;
+      }
+
+      console.log("Invalid Answer: Enter 1 or 2.");
+    }
+  } finally {
+    rl.close();
+  }
+}
+
 async function main() {
   const store = await promptForStore();
+  const sliderType = await promptForSliderType();
 
   runScript("structureData.js");
-  runScript("htwGenerator.js", {
-    HTW_STORE: store,
-  });
+
+  if (sliderType === "HTW") {
+    runScript("htwGenerator.js", {
+      HTW_STORE: store,
+    });
+  } else if (sliderType === "OP") {
+    runScript("opGenerator.js", {
+      HTW_STORE: store,
+    });
+  }
 }
 
 main().catch((error) => {
