@@ -629,6 +629,12 @@ async function main() {
     // Generate HTML
     const html = generateHtml(data);
 
+    // if (sliderStyle === "OP") {
+    //   html.replaceAll("htw", "OP");
+    //   html.replaceAll("Hot This Week", "Outfitter Picks");
+    //   html.replaceAll("hot-this-week", "outfitter-picks");
+    // }
+
     // Get fiscal week
     const fiscalWeek = getFiscalWeek();
 
